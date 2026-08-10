@@ -1,0 +1,20 @@
+model:
+  name: Qwen/Qwen2.5-0.5B-Instruct
+  revision: main
+
+tokenizer:
+  name: Qwen/Qwen2.5-0.5B-Instruct
+  use_fast: true
+  padding_side: right
+
+data:
+  source: Anthropic/hh-rlhf
+  subset: helpful-base
+  split: train
+  max_train_examples: 2000
+  max_length: 512
+
+dpo:
+  beta: 0.1
+
+seed: 42

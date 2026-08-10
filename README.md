@@ -1,5 +1,11 @@
 # DziriDPO
 
+
+
+
+
+
+
 **End-to-end DPO alignment pipeline from scratch.** Implements DPO mechanics in pure PyTorch with numerical verification against TRL, followed by SFT and DPO training, preference data construction, annotation agreement, and evaluation for Algerian Darija alignment.
 
 > **Public framing:** verified DPO mechanics + Darija alignment methodology — not simply “I fine-tuned a model.”
@@ -41,6 +47,36 @@ $$
 The comparison is performed on identical inputs, models, masks, reference log-probabilities, and DPO hyperparameters.
 
 **Production Darija DPO does not begin until the scratch implementation passes this numerical verification.**
+
+
+
+
+
+
+
+
+---
+
+
+## Tests
+
+Run the Track A test suite with:
+
+```bash
+pytest -q
+```
+
+
+
+
+
+
+
+
+
+
+---
+
 
 ---
 
