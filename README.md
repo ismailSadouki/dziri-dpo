@@ -10,7 +10,7 @@
 
 DziriDPO is a two-stage project for understanding and building Direct Preference Optimization (DPO) systems.
 
-The project deliberately separates **mechanical verification** from **production alignment**:
+The project separates **DPO mechanics verification** from **production Darija alignment**:
 
 ```text
                     DziriDPO
@@ -32,27 +32,21 @@ The project deliberately separates **mechanical verification** from **production
              Reproducible results
 ```
 
-The central correctness claim is:
+The central correctness oracle is:
 
 $$
-\left|
-\mathcal{L}_{\mathrm{scratch}}
-------------------------------
-
-\mathcal{L}_{\mathrm{TRL}}
-\right|
-< 10^{-5}
+|L_{\text{scratch}} - L_{\text{TRL}}| < 10^{-5}
 $$
 
-on identical inputs, models, masks, reference log-probabilities, and DPO hyperparameters.
+The comparison is performed on identical inputs, models, masks, reference log-probabilities, and DPO hyperparameters.
 
-Only after this verification does the project move to the production Darija alignment pipeline.
+**Production Darija DPO does not begin until the scratch implementation passes this numerical verification.**
 
 ---
 
 ## Project Goals
 
-### 1. Understand DPO mechanically
+### 1. Understand DPO mechanics
 
 Implement the core DPO computation without relying on a high-level DPO trainer:
 
@@ -71,7 +65,7 @@ Implement the core DPO computation without relying on a high-level DPO trainer:
 
 ### 2. Verify the implementation
 
-Compare the pure-PyTorch implementation against TRL using the same inputs.
+Compare the pure-PyTorch implementation against TRL using identical inputs.
 
 The main correctness oracle is:
 
@@ -99,7 +93,7 @@ DPO margin
 final DPO loss
 ```
 
-### 3. Build a reproducible Algerian Darija alignment pipeline
+### 3. Build an Algerian Darija alignment pipeline
 
 The production pipeline covers:
 
@@ -133,11 +127,11 @@ The final evaluation uses three complementary axes:
 | Preference | Held-out preference accuracy |
 | Generation | Generation win rate          |
 
-Qualitative analysis is also performed on **30+ DPO generations**.
+Qualitative analysis is performed on **30+ DPO generations**.
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```text
 dziri-dpo/
@@ -215,7 +209,7 @@ dziri-dpo/
 
 ---
 
-## DPO Background
+# DPO Background
 
 DPO operates on preference triples:
 
@@ -229,30 +223,27 @@ where:
 * $y_w$ is the preferred response
 * $y_l$ is the rejected response
 
-Given a policy $\pi_\theta$ and reference policy $\pi_{\mathrm{ref}}$, the DPO objective is:
+Given a policy $\pi_\theta$ and reference policy $\pi_{\text{ref}}$, the DPO objective is:
 
 $$
-\mathcal{L}_{\mathrm{DPO}}
-==========================
+L_{\text{DPO}}
+==============
 
--\log
-\sigma
+-\log \sigma
 \left(
 \beta
 \left[
-\log
-\frac{\pi_\theta(y_w|x)}
-{\pi_{\mathrm{ref}}(y_w|x)}
----------------------------
+\log \frac{\pi_\theta(y_w|x)}
+{\pi_{\text{ref}}(y_w|x)}
+-------------------------
 
-\log
-\frac{\pi_\theta(y_l|x)}
-{\pi_{\mathrm{ref}}(y_l|x)}
+\log \frac{\pi_\theta(y_l|x)}
+{\pi_{\text{ref}}(y_l|x)}
 \right]
 \right)
 $$
 
-Define the policy/reference log-ratios:
+Define the chosen-response log-ratio:
 
 $$
 r_w
@@ -260,10 +251,10 @@ r_w
 
 ## \log \pi_\theta(y_w|x)
 
-\log \pi_{\mathrm{ref}}(y_w|x)
+\log \pi_{\text{ref}}(y_w|x)
 $$
 
-and
+and the rejected-response log-ratio:
 
 $$
 r_l
@@ -271,17 +262,16 @@ r_l
 
 ## \log \pi_\theta(y_l|x)
 
-\log \pi_{\mathrm{ref}}(y_l|x)
+\log \pi_{\text{ref}}(y_l|x)
 $$
 
 Then:
 
 $$
-\mathcal{L}_{\mathrm{DPO}}
-==========================
+L_{\text{DPO}}
+==============
 
--\log
-\sigma
+-\log \sigma
 \left(
 \beta(r_w-r_l)
 \right)
@@ -323,9 +313,7 @@ $$
 =============
 
 \sum_{t=1}^{T}
-m_t
-\log
-\pi(y_t|x,y_{<t})
+m_t \log \pi(y_t|x,y_{<t})
 $$
 
 where:
@@ -395,13 +383,7 @@ assert torch.allclose(
 The target is:
 
 $$
-\left|
-\mathcal{L}_{\mathrm{scratch}}
-------------------------------
-
-\mathcal{L}_{\mathrm{TRL}}
-\right|
-< 10^{-5}
+|L_{\text{scratch}} - L_{\text{TRL}}| < 10^{-5}
 $$
 
 The comparison is performed at multiple levels:
@@ -515,8 +497,7 @@ $$
 \kappa
 ======
 
-\frac{p_o-p_e}
-{1-p_e}
+\frac{p_o-p_e}{1-p_e}
 $$
 
 where:
@@ -589,7 +570,7 @@ The selected configuration should provide a reasonable trade-off between:
 $$
 \text{quality},\quad
 \text{VRAM},\quad
-\text{training speed}.
+\text{training speed}
 $$
 
 ---
@@ -931,7 +912,7 @@ The project follows one rule:
 
 The first stage establishes that the DPO implementation is mathematically and numerically correct.
 
-The second stage uses that verified implementation as the foundation for a reproducible Algerian Darija alignment pipeline.
+The second stage uses that verified understanding as the foundation for a reproducible Algerian Darija alignment pipeline.
 
 ```text
 Understand
