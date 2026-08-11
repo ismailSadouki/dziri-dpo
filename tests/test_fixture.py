@@ -12,8 +12,23 @@ def test_tiny_preference_fixture():
 
     assert len(rows) == 3
 
+    required_fields = {
+        "id",
+        "prompt",
+        "chosen",
+        "rejected",
+        "source",
+        "split",
+        "metadata",
+    }
+
     for row in rows:
-        assert set(row) == {"prompt", "chosen", "rejected"}
+        assert required_fields.issubset(row.keys())
+
+        assert row["id"]
         assert row["prompt"]
         assert row["chosen"]
         assert row["rejected"]
+        assert row["source"]
+        assert row["split"]
+        assert isinstance(row["metadata"], dict)
