@@ -1,3 +1,5 @@
-{"prompt":"What is 2 + 2?","chosen":"2 + 2 equals 4.","rejected":"2 + 2 equals 5."}
-{"prompt":"What is the capital of France?","chosen":"The capital of France is Paris.","rejected":"The capital of France is Berlin."}
-{"prompt":"Give me a short definition of a neural network.","chosen":"A neural network is a model made of interconnected layers that learn patterns from data.","rejected":"A neural network is a type of database used to store internet pages."}
+
+
+{"id":"tiny_001","prompt":"What is 2 + 2?","chosen":"2 + 2 equals 4.","rejected":"2 + 2 equals 5.","source":"handwritten","split":"test","metadata":{"purpose":"template_audit"}}
+{"id":"tiny_002","prompt":"What is the capital of France?","chosen":"The capital of France is Paris.","rejected":"The capital of France is Berlin.","source":"handwritten","split":"test","metadata":{"purpose":"template_audit"}}
+{"id":"tiny_003","prompt":"Give me a short definition of a neural network.","chosen":"A neural network is a model made of interconnected layers that learn patterns from data.","rejected":"A neural network is a type of database used to store internet pages.","source":"handwritten","split":"test","metadata":{"purpose":"template_audit"}}
