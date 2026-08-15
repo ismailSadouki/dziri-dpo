@@ -1,7 +1,7 @@
 import json
 from dataclasses import dataclass
 from pathlib import Path
-
+import argparse
 import sys
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
@@ -270,8 +270,7 @@ def write_jsonl(
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
-def main():
-    input_path = Path("tests/fixtures/tiny_preferences.jsonl")
+def main(input_path: str):
     output_path = Path(
         "tests/fixtures/tiny_preferences_validated.jsonl"
     )
@@ -288,7 +287,7 @@ def main():
 
     manual_sample = sample_for_manual_inspection(
         result.valid,
-        n=20,
+        n=50,
         seed=42,
     )
 
@@ -417,4 +416,20 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+
+    parser = argparse.ArgumentParser(
+        description="Validate canonical preference data."
+    )
+    parser.add_argument(
+        "input_path",
+        type=str,
+        default="tests/fixtures/tiny_preferences.jsonl", # data/english/hh_rlhf_helpful-base_2000.jsonl
+        help="Path to preference JSONL file",
+    )
+
+    args = parser.parse_args()
+
+    main(args.input_path)
+
+
+
