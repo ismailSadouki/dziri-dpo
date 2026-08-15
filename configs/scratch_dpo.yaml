@@ -17,4 +17,21 @@ data:
 dpo:
   beta: 0.1
 
+reference:
+  mode: adapter_disabled
+
+quantization:
+  enabled: true
+  load_in_4bit: true
+  bnb_4bit_quant_type: 'nf4'
+  bnb_4bit_compute_dtype: bfloat16
+  bnb_4bit_use_double_quant: true
+
+lora:
+  enabled: true
+  r: 16
+  alpha: 32
+  dropout: 0.05
+
+
 seed: 42

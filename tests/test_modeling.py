@@ -15,10 +15,11 @@ from scratch_dpo.modeling import (
 )
 from scratch_dpo.reference import reference_forward
 
+
 MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
 
 
-def test_reference_forward():
+def test_policy_forward():
 
     tokenizer = load_tokenizer(MODEL_NAME)
 
@@ -33,15 +34,23 @@ def test_reference_forward():
     ).to(model.device)
 
     with torch.no_grad():
-        reference_outputs = reference_forward(
-            model,
-            inputs,
-        )
+        outputs = model(**inputs)
 
     B, T = inputs["input_ids"].shape
 
-    assert reference_outputs.logits.shape == (
-        B,
-        T,
-        model.config.vocab_size,
-    )
+    assert outputs.logits.shape[:2] == (B, T)
+    assert outputs.logits.shape[2] == model.config.vocab_size
+
+
+
+def test_lora_has_trainable_parameters():
+
+    model = load_policy(MODEL_NAME)
+    model = attach_lora(model)
+
+    trainable = [
+        p for p in model.parameters()
+        if p.requires_grad
+    ]
+
+    assert len(trainable) > 0

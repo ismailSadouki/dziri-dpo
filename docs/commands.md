@@ -167,5 +167,13 @@ data/english/hh_rlhf_helpful-base_2000.jsonl
 reports/preference_data_audit.md
 ```
 
+---
 
 # M2 — Log probabilities
+
+## M2.1 — Model loading audit
+
+```bash
+python scripts/test_policy_forward.py
+```
+
