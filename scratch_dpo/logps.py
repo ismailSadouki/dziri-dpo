@@ -80,6 +80,8 @@ def get_batch_logps_from_logits(
 
     token_log_probs = token_log_probs * shift_mask
 
+    
+
     # Sum / average per sequence
     if average_log_prob:
         denominator = shift_mask.sum(dim=-1).clamp_min(1)
