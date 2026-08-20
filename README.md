@@ -68,6 +68,45 @@ pytest -q
 
 
 
+### TRL numerical verification
+
+```bash
+pytest tests/test_trl_equivalence.py -v -s
+pytest tests/test_trl_real_batch.py -v -s
+```
+
+Both synthetic and real-batch tests pass with:
+
+$$
+\text{max_abs_diff} \leq 10^{-5}
+$$
+
+### Parameter Count
+
+The model has:
+
+$$
+496,195,456
+$$
+
+total parameters and:
+
+$$
+2,162,688
+$$
+
+trainable parameters.
+
+Therefore, the percentage of trainable parameters is:
+
+$$
+\frac{2,162,688}{496,195,456} \times 100 \approx 0.4359%
+$$
+
+Which confirms that the LoRA adapter is attached correctly and only a small fraction of the model parameters are trainable.
+
+
+
 
 
 

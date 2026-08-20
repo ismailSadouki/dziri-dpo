@@ -15,6 +15,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import torch
+from peft import prepare_model_for_kbit_training
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
@@ -66,6 +67,7 @@ def load_policy(model_name: str):
     return model
 
 def attach_lora(model):
+    model = prepare_model_for_kbit_training(model)
     config = LoraConfig(
         r=16,
         lora_alpha=32,

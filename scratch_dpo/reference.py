@@ -1,6 +1,6 @@
 import torch
 
-
+@torch.inference_mode()
 def reference_forward(model, inputs):
     model.eval()
 
