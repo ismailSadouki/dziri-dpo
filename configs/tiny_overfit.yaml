@@ -4,13 +4,13 @@ model:
   name: "Qwen/Qwen2.5-0.5B-Instruct"
 
 training:
-  output_dir: "outputs/dpo_english_smoke"
+  output_dir: "outputs/dpo_tiny_overfit"
 
   num_epochs: 1
-  max_steps: 50
+  max_steps: 30
 
   batch_size: 1
-  gradient_accumulation_steps: 2
+  gradient_accumulation_steps: 1
 
   learning_rate: 5.0e-5
   weight_decay: 0.0
@@ -19,10 +19,10 @@ training:
   max_grad_norm: 1.0
 
   eval_every_steps: 10
-  save_every_steps: 25
+  save_every_steps: 30
   log_every_steps: 1
 
-  tiny_overfit: false
+  tiny_overfit: true
 
 data:
   max_length: 512

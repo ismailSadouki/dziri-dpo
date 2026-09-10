@@ -67,7 +67,8 @@ def load_policy(model_name: str):
     return model
 
 def attach_lora(model):
-    model = prepare_model_for_kbit_training(model)
+    model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)
+    model.config.use_cache = False
     config = LoraConfig(
         r=16,
         lora_alpha=32,
@@ -91,7 +92,7 @@ def attach_lora(model):
 
 
 def count_parameters(model):
-    totla = 0
+    total = 0
     trainable = 0
     for parameter in model.parameters():
         n = parameter.numel()

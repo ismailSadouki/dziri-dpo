@@ -27,9 +27,7 @@ def get_batch_logps_from_logits(
     """
 
 
-    # --------------------------------------------------
     # Shape checks
-    # --------------------------------------------------
     if logits.ndim != 3:
         raise ValueError(
             f"logits must have shape [B, T, V], got {logits.shape}"
@@ -59,7 +57,6 @@ def get_batch_logps_from_logits(
 
     # Autoregressive shift
     # logits[:, t] predicts labels[:, t + 1]
-    # --------------------------------------------------
     shift_logits = logits[:, :-1, :] #[B, T-1, V]
     shift_labels = labels[:, 1:]     #[B, T-1]
     shift_mask = loss_mask[:, 1:]    #[B, T-1]
