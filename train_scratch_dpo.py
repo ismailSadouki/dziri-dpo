@@ -15,7 +15,10 @@ from peft import PeftModel
 
 from scratch_dpo.collator import DPODataCollator
 from scratch_dpo.data import tokenize_pair
-from scratch_dpo.dataset import load_hh_preferences
+from scratch_dpo.dataset import (
+    load_hh_preferences,
+    load_preference_jsonl,
+)
 from scratch_dpo.forward import (
     concatenated_forward,
     reference_concatenated_forward,
@@ -70,9 +73,13 @@ def build_training_dataset(
         max_examples: int,
         max_length: int,
         tiny_overfit: bool = False,
+        input_path: str | Path | None = None,
 ):
     if tiny_overfit:
         rows = load_tiny_preferences()
+        rejected = []
+    elif input_path is not None:
+        rows = load_preference_jsonl(input_path)
         rejected = []
     else:
         rows, rejected = load_hh_preferences(
@@ -100,13 +107,16 @@ def build_training_dataset(
             tokenized.append(example)
 
         except ValueError as exc:
+            print(
+                f"Tokenization rejected id={row.get('id')}: {exc}"
+            )
+
             rejected.append(
                 {
                     "id": row.get("id"),
                     "reason": str(exc),
                 }
             )
-
 
     if not tokenized:
         raise ValueError(
@@ -568,7 +578,17 @@ def train(
         ),
         max_length=int(data_config["max_length"]),
         tiny_overfit=tiny_overfit,
+        input_path=data_config.get("train_path"),
     )
+
+    expected_train_examples = data_config.get("train_examples")
+
+    if expected_train_examples is not None:
+        if len(tokenized_dataset) != expected_train_examples:
+            raise RuntimeError(
+                f"Expected {expected_train_examples} tokenized "
+                f"training examples, got {len(tokenized_dataset)}."
+            )
 
     if rejected:
         print(

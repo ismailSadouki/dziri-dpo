@@ -12,6 +12,11 @@ SUBSET = "helpful-base"
 SPLIT = "train"
 SEED = 42
 N_EXAMPLES = 2000
+TRAIN_EXAMPLES = 1800
+EVAL_EXAMPLES = 200
+TOTAL_VALID_EXAMPLES = TRAIN_EXAMPLES + EVAL_EXAMPLES
+
+
 
 def parse_hh_conversation(text: str) -> tuple[str, str]:
     """
@@ -102,9 +107,9 @@ def load_hh_preferences(
         
     )
     dataset = dataset.shuffle(seed=seed)
-    dataset = dataset.select(
-        range(min(n_examples, len(dataset)))
-    )
+    # dataset = dataset.select(
+    #     range(min(n_examples, len(dataset)))
+    # )
 
 
     rows = []
@@ -113,16 +118,105 @@ def load_hh_preferences(
     for index, example in enumerate(dataset):
         try:
             row = canonicalize_example(example, index)
+
+            if row["chosen"].strip() == row["rejected"].strip():
+                raise ValueError(
+                    "chosen and rejected responses are identical"
+                )
+            
             rows.append(row)
 
+            if len(rows) >= n_examples:
+                break
         except ValueError as exc:
             rejected.append({
                 "index": index,
                 "reason": str(exc),
             })
 
+    if len(rows) < n_examples:
+        raise RuntimeError(
+            f"Could only collect {len(rows)} valid examples "
+            f"out of requested {n_examples}."
+        )
+
     return rows, rejected
 
+def load_preference_jsonl(
+    path: str | Path,
+) -> list[dict[str, Any]]:
+    path = Path(path)
+
+    if not path.exists():
+        raise FileNotFoundError(path)
+
+    rows = []
+
+    with path.open("r", encoding="utf-8") as f:
+        for line_number, line in enumerate(f, start=1):
+            line = line.strip()
+
+            if not line:
+                continue
+
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise ValueError(
+                    f"Invalid JSON at {path}:{line_number}"
+                ) from exc
+
+            rows.append(row)
+
+    if not rows:
+        raise ValueError(
+            f"No preference examples found in {path}"
+        )
+
+    return rows
+
+def load_hh_train_eval(
+    train_examples: int = TRAIN_EXAMPLES,
+    eval_examples: int = EVAL_EXAMPLES,
+    seed: int = SEED,
+) -> tuple[
+    list[dict[str, Any]],
+    list[dict[str, Any]],
+    list[dict[str, Any]],
+]:
+    total = train_examples + eval_examples
+
+    rows, rejected = load_hh_preferences(
+        n_examples=total,
+        seed=seed,
+    )
+
+    train_rows = rows[:train_examples]
+    eval_rows = rows[train_examples:total]
+
+    train_ids = {row["id"] for row in train_rows}
+    eval_ids = {row["id"] for row in eval_rows}
+
+    overlap = train_ids & eval_ids
+
+    if overlap:
+        raise RuntimeError(
+            f"Train/eval ID overlap detected: {sorted(overlap)[:10]}"
+        )
+
+    if len(train_rows) != train_examples:
+        raise RuntimeError(
+            f"Expected {train_examples} train examples, "
+            f"got {len(train_rows)}."
+        )
+
+    if len(eval_rows) != eval_examples:
+        raise RuntimeError(
+            f"Expected {eval_examples} eval examples, "
+            f"got {len(eval_rows)}."
+        )
+
+    return train_rows, eval_rows, rejected
 
 def write_jsonl(
         rows: list[dict[str, Any]],
@@ -156,3 +250,7 @@ if __name__ == "__main__":
     print(f"Rejected:  {len(rejected)}")
     print(f"Output:    {output_path}")
     print(f"Rejected:  {rejected_path}")
+
+
+
+

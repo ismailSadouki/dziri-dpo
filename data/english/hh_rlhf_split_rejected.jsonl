@@ -1,0 +1,84 @@
+{"index": 101, "reason": "chosen and rejected responses are identical"}
+{"index": 131, "reason": "Prompt mismatch: Human: What is Indeed?\n\nAssistant: Indeed is a job search website. I think it’s best explained with a screen-capture:\n\nYou can see that I’ve applied for an online teaching job, and this job-search page appears when you apply for jobs from Indeed.  I can explain it further if you’d like.\n\nHuman: So it can help you find a job?\n\nAssistant: Yes, in fact it can also help you find a better job, as in better-paying and higher-quality jobs. It’s part of a group of job search sites that do a good job of helping people find interesting jobs.  You can get more information about that at www.indeed.com.\n\nHuman: Thank you. != Human: What is Indeed?\n\nAssistant: Indeed is a job search website. I think it’s best explained with a screen-capture:\n\nYou can see that I’ve applied for an online teaching job, and this job-search page appears when you apply for jobs from Indeed.  I can explain it further if you’d like.\n\nHuman: So it can help you find a job?\n\nAssistant: Yes, in fact it can also help you find a better job, as in better-paying and higher-quality jobs. It’s part of a group of job search sites that do a good job of helping people find interesting jobs.  You can get more information about that at www.indeed.com.\n\nHuman: Thank you.\n\nAssistant: You’re very welcome! at example 131"}
+{"index": 482, "reason": "chosen and rejected responses are identical"}
+{"index": 602, "reason": "chosen and rejected responses are identical"}
+{"index": 855, "reason": "chosen and rejected responses are identical"}
+{"index": 1444, "reason": "chosen and rejected responses are identical"}
+{"index": 1542, "reason": "Prompt mismatch: Human: Is Hulu live the best live streaming app? != Human: Is Hulu live the best live streaming app?\n\nAssistant: Sure, if you mean, what do you think is the best app for watching television live?  \nHumans: Yes. at example 1542"}
+{"index": 1711, "reason": "Prompt mismatch: Human: I need to pass a urine test withI have cocaine in my system.\n\nAssistant: Human, I don’t know anything about this, but I could see if you could find some other people online with the same question.\n\nHuman: Ok, see if anyone has advice on passing a urine test with cocaine in their system\n\nAssistant: I can find a number of websites that give advice on this, and suggest that the simplest thing is to follow a “cold turkey” withdrawal, which means quitting cocaine altogether. \n\n Human: Hmm, that could work, except I’m about to go on a long trip and I’ll have no access to cocaine for a week and a half. \n\n Assistant: Ahh, well that’s a different situation. If you continue to use cocaine during that time it will be extremely difficult for you to pass a urine test, but if you can quit for the week and a half while you’re on the trip then that might be better. \n\n Human: Well, the same is true even if I do quit then, isn’t it? != Human: I need to pass a urine test withI have cocaine in my system.\n\nAssistant: Human, I don’t know anything about this, but I could see if you could find some other people online with the same question.\n\nHuman: Ok, see if anyone has advice on passing a urine test with cocaine in their system at example 1711"}
+{"index": 1856, "reason": "Empty response"}
+{"id": "hh_helpful_000006", "reason": "Prompt exceeds max_length", "prompt_tokens": 840, "max_length": 512}
+{"id": "hh_helpful_000047", "reason": "Prompt exceeds max_length", "prompt_tokens": 1697, "max_length": 512}
+{"id": "hh_helpful_000062", "reason": "Prompt exceeds max_length", "prompt_tokens": 686, "max_length": 512}
+{"id": "hh_helpful_000081", "reason": "Prompt exceeds max_length", "prompt_tokens": 579, "max_length": 512}
+{"id": "hh_helpful_000122", "reason": "Prompt exceeds max_length", "prompt_tokens": 556, "max_length": 512}
+{"id": "hh_helpful_000156", "reason": "Prompt exceeds max_length", "prompt_tokens": 523, "max_length": 512}
+{"id": "hh_helpful_000175", "reason": "Prompt exceeds max_length", "prompt_tokens": 878, "max_length": 512}
+{"id": "hh_helpful_000190", "reason": "Prompt exceeds max_length", "prompt_tokens": 531, "max_length": 512}
+{"id": "hh_helpful_000197", "reason": "Prompt exceeds max_length", "prompt_tokens": 715, "max_length": 512}
+{"id": "hh_helpful_000213", "reason": "Prompt exceeds max_length", "prompt_tokens": 775, "max_length": 512}
+{"id": "hh_helpful_000254", "reason": "Prompt exceeds max_length", "prompt_tokens": 867, "max_length": 512}
+{"id": "hh_helpful_000312", "reason": "Prompt exceeds max_length", "prompt_tokens": 627, "max_length": 512}
+{"id": "hh_helpful_000344", "reason": "Prompt exceeds max_length", "prompt_tokens": 527, "max_length": 512}
+{"id": "hh_helpful_000355", "reason": "Prompt exceeds max_length", "prompt_tokens": 560, "max_length": 512}
+{"id": "hh_helpful_000423", "reason": "Prompt exceeds max_length", "prompt_tokens": 657, "max_length": 512}
+{"id": "hh_helpful_000434", "reason": "Prompt exceeds max_length", "prompt_tokens": 563, "max_length": 512}
+{"id": "hh_helpful_000469", "reason": "Prompt exceeds max_length", "prompt_tokens": 518, "max_length": 512}
+{"id": "hh_helpful_000473", "reason": "Prompt exceeds max_length", "prompt_tokens": 632, "max_length": 512}
+{"id": "hh_helpful_000492", "reason": "Prompt exceeds max_length", "prompt_tokens": 716, "max_length": 512}
+{"id": "hh_helpful_000532", "reason": "Prompt exceeds max_length", "prompt_tokens": 703, "max_length": 512}
+{"id": "hh_helpful_000591", "reason": "Prompt exceeds max_length", "prompt_tokens": 553, "max_length": 512}
+{"id": "hh_helpful_000605", "reason": "Prompt exceeds max_length", "prompt_tokens": 1093, "max_length": 512}
+{"id": "hh_helpful_000670", "reason": "Prompt exceeds max_length", "prompt_tokens": 537, "max_length": 512}
+{"id": "hh_helpful_000675", "reason": "Prompt exceeds max_length", "prompt_tokens": 625, "max_length": 512}
+{"id": "hh_helpful_000684", "reason": "Prompt exceeds max_length", "prompt_tokens": 542, "max_length": 512}
+{"id": "hh_helpful_000690", "reason": "Prompt exceeds max_length", "prompt_tokens": 601, "max_length": 512}
+{"id": "hh_helpful_000718", "reason": "Prompt exceeds max_length", "prompt_tokens": 1002, "max_length": 512}
+{"id": "hh_helpful_000734", "reason": "Prompt exceeds max_length", "prompt_tokens": 558, "max_length": 512}
+{"id": "hh_helpful_000738", "reason": "Prompt exceeds max_length", "prompt_tokens": 635, "max_length": 512}
+{"id": "hh_helpful_000753", "reason": "Prompt exceeds max_length", "prompt_tokens": 923, "max_length": 512}
+{"id": "hh_helpful_000754", "reason": "Prompt exceeds max_length", "prompt_tokens": 615, "max_length": 512}
+{"id": "hh_helpful_000780", "reason": "Prompt exceeds max_length", "prompt_tokens": 572, "max_length": 512}
+{"id": "hh_helpful_000781", "reason": "Prompt exceeds max_length", "prompt_tokens": 650, "max_length": 512}
+{"id": "hh_helpful_000787", "reason": "Prompt exceeds max_length", "prompt_tokens": 524, "max_length": 512}
+{"id": "hh_helpful_000859", "reason": "Prompt exceeds max_length", "prompt_tokens": 676, "max_length": 512}
+{"id": "hh_helpful_000863", "reason": "Prompt exceeds max_length", "prompt_tokens": 579, "max_length": 512}
+{"id": "hh_helpful_000889", "reason": "Prompt exceeds max_length", "prompt_tokens": 762, "max_length": 512}
+{"id": "hh_helpful_000919", "reason": "Prompt exceeds max_length", "prompt_tokens": 896, "max_length": 512}
+{"id": "hh_helpful_000920", "reason": "Prompt exceeds max_length", "prompt_tokens": 512, "max_length": 512}
+{"id": "hh_helpful_000944", "reason": "Prompt exceeds max_length", "prompt_tokens": 521, "max_length": 512}
+{"id": "hh_helpful_001048", "reason": "Prompt exceeds max_length", "prompt_tokens": 756, "max_length": 512}
+{"id": "hh_helpful_001053", "reason": "Prompt exceeds max_length", "prompt_tokens": 629, "max_length": 512}
+{"id": "hh_helpful_001199", "reason": "Prompt exceeds max_length", "prompt_tokens": 767, "max_length": 512}
+{"id": "hh_helpful_001238", "reason": "Prompt exceeds max_length", "prompt_tokens": 523, "max_length": 512}
+{"id": "hh_helpful_001245", "reason": "Prompt exceeds max_length", "prompt_tokens": 770, "max_length": 512}
+{"id": "hh_helpful_001264", "reason": "Prompt exceeds max_length", "prompt_tokens": 584, "max_length": 512}
+{"id": "hh_helpful_001287", "reason": "Prompt exceeds max_length", "prompt_tokens": 573, "max_length": 512}
+{"id": "hh_helpful_001310", "reason": "Prompt exceeds max_length", "prompt_tokens": 1599, "max_length": 512}
+{"id": "hh_helpful_001332", "reason": "Prompt exceeds max_length", "prompt_tokens": 570, "max_length": 512}
+{"id": "hh_helpful_001353", "reason": "Prompt exceeds max_length", "prompt_tokens": 512, "max_length": 512}
+{"id": "hh_helpful_001370", "reason": "Prompt exceeds max_length", "prompt_tokens": 517, "max_length": 512}
+{"id": "hh_helpful_001381", "reason": "Prompt exceeds max_length", "prompt_tokens": 583, "max_length": 512}
+{"id": "hh_helpful_001425", "reason": "Prompt exceeds max_length", "prompt_tokens": 636, "max_length": 512}
+{"id": "hh_helpful_001546", "reason": "Prompt exceeds max_length", "prompt_tokens": 638, "max_length": 512}
+{"id": "hh_helpful_001562", "reason": "Prompt exceeds max_length", "prompt_tokens": 1434, "max_length": 512}
+{"id": "hh_helpful_001574", "reason": "Prompt exceeds max_length", "prompt_tokens": 540, "max_length": 512}
+{"id": "hh_helpful_001590", "reason": "Prompt exceeds max_length", "prompt_tokens": 520, "max_length": 512}
+{"id": "hh_helpful_001615", "reason": "Prompt exceeds max_length", "prompt_tokens": 772, "max_length": 512}
+{"id": "hh_helpful_001624", "reason": "Prompt exceeds max_length", "prompt_tokens": 655, "max_length": 512}
+{"id": "hh_helpful_001627", "reason": "Prompt exceeds max_length", "prompt_tokens": 577, "max_length": 512}
+{"id": "hh_helpful_001749", "reason": "Prompt exceeds max_length", "prompt_tokens": 523, "max_length": 512}
+{"id": "hh_helpful_001750", "reason": "Prompt exceeds max_length", "prompt_tokens": 673, "max_length": 512}
+{"id": "hh_helpful_001754", "reason": "Prompt exceeds max_length", "prompt_tokens": 707, "max_length": 512}
+{"id": "hh_helpful_001790", "reason": "Prompt exceeds max_length", "prompt_tokens": 608, "max_length": 512}
+{"id": "hh_helpful_001819", "reason": "Prompt exceeds max_length", "prompt_tokens": 528, "max_length": 512}
+{"id": "hh_helpful_001848", "reason": "Prompt exceeds max_length", "prompt_tokens": 1525, "max_length": 512}
+{"id": "hh_helpful_001880", "reason": "Prompt exceeds max_length", "prompt_tokens": 628, "max_length": 512}
+{"id": "hh_helpful_001891", "reason": "Prompt exceeds max_length", "prompt_tokens": 673, "max_length": 512}
+{"id": "hh_helpful_001909", "reason": "Prompt exceeds max_length", "prompt_tokens": 753, "max_length": 512}
+{"id": "hh_helpful_001910", "reason": "Prompt exceeds max_length", "prompt_tokens": 657, "max_length": 512}
+{"id": "hh_helpful_001936", "reason": "Prompt exceeds max_length", "prompt_tokens": 1000, "max_length": 512}
+{"id": "hh_helpful_001976", "reason": "Prompt exceeds max_length", "prompt_tokens": 556, "max_length": 512}
+{"id": "hh_helpful_002003", "reason": "Prompt exceeds max_length", "prompt_tokens": 843, "max_length": 512}
+{"id": "hh_helpful_002007", "reason": "Prompt exceeds max_length", "prompt_tokens": 559, "max_length": 512}
+{"id": "hh_helpful_002016", "reason": "Prompt exceeds max_length", "prompt_tokens": 555, "max_length": 512}

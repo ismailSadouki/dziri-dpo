@@ -1,0 +1,25 @@
+seed: 42
+model:
+  name: Qwen/Qwen2.5-0.5B-Instruct
+training:
+  output_dir: outputs/dpo_english_m4_2
+  num_epochs: 1
+  max_steps: 50
+  batch_size: 1
+  gradient_accumulation_steps: 2
+  learning_rate: 5.0e-05
+  weight_decay: 0.0
+  beta: 0.1
+  max_grad_norm: 1.0
+  eval_every_steps: 10
+  save_every_steps: 25
+  log_every_steps: 1
+  tiny_overfit: false
+data:
+  train_path: data/english/hh_rlhf_helpful-base_1800_train.jsonl
+  eval_path: data/english/hh_rlhf_helpful-base_200_eval.jsonl
+  train_examples: 1736
+  eval_examples: 200
+  max_length: 512
+checkpoint:
+  resume_from: null

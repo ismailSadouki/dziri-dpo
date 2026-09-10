@@ -1,0 +1,44 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "eval_path": "data/english/hh_rlhf_helpful-base_200_eval.jsonl",
+  "max_length": 512,
+  "batch_size": 1,
+  "results": [
+    {
+      "checkpoint": "step-0",
+      "examples": 200,
+      "preference_accuracy": 0.0,
+      "non_tie_accuracy": null,
+      "ties": 200,
+      "tie_rate": 1.0,
+      "mean_margin": 0.0,
+      "median_margin": 0.0,
+      "mean_chosen_reward": 0.0,
+      "mean_rejected_reward": 0.0
+    },
+    {
+      "checkpoint": "outputs/dpo_english_m4_2/checkpoint-25",
+      "examples": 200,
+      "preference_accuracy": 0.395,
+      "non_tie_accuracy": 0.46745562130177515,
+      "ties": 31,
+      "tie_rate": 0.155,
+      "mean_margin": -0.0059375,
+      "median_margin": 0.0,
+      "mean_chosen_reward": 0.1930963134765625,
+      "mean_rejected_reward": 0.1949072265625
+    },
+    {
+      "checkpoint": "outputs/dpo_english_m4_2/checkpoint-50",
+      "examples": 200,
+      "preference_accuracy": 0.41,
+      "non_tie_accuracy": 0.47126436781609193,
+      "ties": 26,
+      "tie_rate": 0.13,
+      "mean_margin": -0.05375,
+      "median_margin": 0.0,
+      "mean_chosen_reward": 0.2729315185546875,
+      "mean_rejected_reward": 0.27633087158203123
+    }
+  ]
+}
