@@ -1,0 +1,68 @@
+# Track B production model configuration.
+#
+# Primary model:
+#   Qwen/Qwen2.5-1.5B-Instruct
+#
+# Rationale:
+#   - Apache-2.0 license
+#   - Arabic is among supported languages
+#   - Native instruction/chat template
+#   - Small enough for QLoRA on a 3.68 GiB RTX 3050
+#   - Same Qwen family already validated in Track A
+#
+# Alternative considered:
+#   MBZUAI-Paris/Atlas-Chat-2B
+#   Atlas is explicitly adapted to Moroccan Darija, but the main
+#   thesis pipeline targets Algerian Darija. It is therefore retained
+#   as a candidate for a later comparative experiment rather than
+#   being the primary production model.
+
+model:
+  name: Qwen/Qwen2.5-1.5B-Instruct
+  revision: main
+  tokenizer_name: Qwen/Qwen2.5-1.5B-Instruct
+  tokenizer_revision: main
+
+  architecture: qwen2
+  task: causal_lm
+
+  trust_remote_code: false
+
+  chat_template:
+    source: tokenizer
+    add_generation_prompt: true
+
+  context_length: 32768
+
+quantization:
+  enabled: true
+  method: bitsandbytes
+  load_in_4bit: true
+
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_use_double_quant: true
+  bnb_4bit_compute_dtype: bfloat16
+
+adapter:
+  method: lora
+
+  # B0 baseline. These values are not the final sweep decision.
+  r: 16
+  alpha: 32
+  dropout: 0.05
+
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+
+training:
+  max_seq_length: 512
+
+hardware:
+  device: cuda
+  expected_gpu_class: NVIDIA_T4_or_RTX3050
+
+reproducibility:
+  seed: 42

@@ -1,0 +1,25 @@
+run:
+  name: qwen15b_darija_eval_baseline
+  seed: 42
+
+models:
+  base: Qwen/Qwen2.5-1.5B-Instruct
+  sft: null
+  dpo: null
+
+generation:
+  temperature: 0.7
+  top_p: 0.9
+  max_new_tokens: 256
+
+preference:
+  tie_threshold: 0.0
+
+evaluation:
+  stages:
+    - base
+    - sft
+    - dpo
+
+output:
+  root: outputs/eval

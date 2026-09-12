@@ -1,0 +1,39 @@
+run:
+  name: qwen15b_darija_sft_baseline
+  seed: 42
+
+model:
+  config: configs/model.yaml
+
+data:
+  train: null
+  validation: null
+  format: conversational
+
+training:
+  num_train_epochs: 1
+  max_seq_length: 512
+
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+
+  learning_rate: 5.0e-5
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+
+  gradient_checkpointing: true
+
+logging:
+  logging_steps: 10
+
+evaluation:
+  strategy: steps
+  eval_steps: 50
+
+saving:
+  strategy: steps
+  save_steps: 50
+  save_total_limit: 2
+
+output:
+  root: outputs/sft
