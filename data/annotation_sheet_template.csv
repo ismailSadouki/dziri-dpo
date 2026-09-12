@@ -1,0 +1,2 @@
+pair_id,annotator_id,prompt,response_a,response_b,preference,primary_reason,secondary_reason,confidence,notes,guideline_version,annotation_timestamp,adjudicated,adjudicator_id
+example_001,ann_01,PROMPT_HERE,RESPONSE_A_HERE,RESPONSE_B_HERE,,,,,,1.0,,,false,
