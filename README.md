@@ -824,29 +824,29 @@ Each experiment records:
 
 ## Scratch DPO
 
-* [ ] Model/tokenizer/data contract
-* [ ] Canonical preference triples
-* [ ] Chat templating
-* [ ] Response-only masks
-* [ ] Data audit
-* [ ] Log-probability primitive
-* [ ] Reference policy
-* [ ] DPO derivation
-* [ ] DPO loss
-* [ ] Degenerate/sign/numerical tests
-* [ ] TRL numerical oracle
-* [ ] Scratch training loop
-* [ ] English DPO run
-* [ ] DPO health report
+* [x] Model/tokenizer/data contract
+* [x] Canonical preference triples
+* [x] Chat templating
+* [x] Response-only masks
+* [x] Data audit
+* [x] Log-probability primitive
+* [x] Reference policy
+* [x] DPO derivation
+* [x] DPO loss
+* [x] Degenerate/sign/numerical tests
+* [x] TRL numerical oracle
+* [x] Scratch training loop
+* [x] English DPO run
+* [x] DPO health report
 
 ## Darija Alignment
 
-* [ ] Darija resource survey
-* [ ] Preference guideline
-* [ ] SFT dataset
-* [ ] Preference dataset
-* [ ] Double-annotation sample
-* [ ] Cohen's $\kappa$
+* [x] Darija resource survey
+* [x] Preference guideline
+* [x] SFT dataset
+* [x] Preference dataset
+* [x] Double-annotation sample
+* [x] Cohen's $\kappa$
 * [ ] Dataset card
 * [ ] TRL SFT
 * [ ] QLoRA instrumentation
@@ -861,36 +861,6 @@ Each experiment records:
 * [ ] Generation win rate
 * [ ] 30+ generation qualitative analysis
 * [ ] LLM-judge reliability study
-
----
-
-# Design Principle
-
-The project follows one rule:
-
-> **Do not claim that the pipeline works without defining what evidence would prove it.**
-
-The first stage establishes that the DPO implementation is mathematically and numerically correct.
-
-The second stage uses that verified understanding as the foundation for a reproducible Algerian Darija alignment pipeline.
-
-```text
-Understand
-    ↓
-Implement
-    ↓
-Test
-    ↓
-Verify
-    ↓
-Train
-    ↓
-Measure
-    ↓
-Analyze
-    ↓
-Release
-```
 
 ---
 
