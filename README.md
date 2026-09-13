@@ -1,13 +1,6 @@
 # DziriDPO
 
-
-
-
-
-
-
 **End-to-end DPO alignment pipeline from scratch.** Implements DPO mechanics in pure PyTorch with numerical verification against TRL, followed by SFT and DPO training, preference data construction, annotation agreement, and evaluation for Algerian Darija alignment.
-
 
 ---
 
@@ -39,23 +32,13 @@ The project separates **DPO mechanics verification** from **production Darija al
 
 The central correctness oracle is:
 
-$$
-|L_{\text{scratch}} - L_{\text{TRL}}| < 10^{-5}
-$$
+$$|L_{\text{scratch}} - L_{\text{TRL}}| < 10^{-5}$$
 
 The comparison is performed on identical inputs, models, masks, reference log-probabilities, and DPO hyperparameters.
 
 **Production Darija DPO does not begin until the scratch implementation passes this numerical verification.**
 
-
-
-
-
-
-
-
 ---
-
 
 ## Tests
 
@@ -64,8 +47,6 @@ Run the Track A test suite with:
 ```bash
 pytest -q
 ```
-
-
 
 ### TRL numerical verification
 
@@ -76,45 +57,25 @@ pytest tests/test_trl_real_batch.py -v -s
 
 Both synthetic and real-batch tests pass with:
 
-$$
-\text{max_abs_diff} \leq 10^{-5}
-$$
+$$\text{max\_abs\_diff} \leq 10^{-5}$$
 
 ### Parameter Count
 
 The model has:
 
-$$
-496,195,456
-$$
+$$496{,}195{,}456$$
 
 total parameters and:
 
-$$
-2,162,688
-$$
+$$2{,}162{,}688$$
 
 trainable parameters.
 
 Therefore, the percentage of trainable parameters is:
 
-$$
-\frac{2,162,688}{496,195,456} \times 100 \approx 0.4359%
-$$
+$$\frac{2{,}162{,}688}{496{,}195{,}456} \times 100 \approx 0.4359\%$$
 
 Which confirms that the LoRA adapter is attached correctly and only a small fraction of the model parameters are trainable.
-
-
-
-
-
-
-
-
-
-
----
-
 
 ---
 
@@ -196,7 +157,7 @@ evaluation
 The final evaluation uses three complementary axes:
 
 | Axis       | Evaluation                   |
-| ---------- | ---------------------------- |
+| ---------- | ----------------------------- |
 | Knowledge  | AlgerianMMLU                 |
 | Preference | Held-out preference accuracy |
 | Generation | Generation win rate          |
@@ -287,9 +248,7 @@ dziri-dpo/
 
 DPO operates on preference triples:
 
-$$
-(x, y_w, y_l)
-$$
+$$(x, y_w, y_l)$$
 
 where:
 
@@ -299,57 +258,19 @@ where:
 
 Given a policy $\pi_\theta$ and reference policy $\pi_{\text{ref}}$, the DPO objective is:
 
-$$
-L_{\text{DPO}}
-==============
-
--\log \sigma
-\left(
-\beta
-\left[
-\log \frac{\pi_\theta(y_w|x)}
-{\pi_{\text{ref}}(y_w|x)}
--------------------------
-
-\log \frac{\pi_\theta(y_l|x)}
-{\pi_{\text{ref}}(y_l|x)}
-\right]
-\right)
-$$
+$$L_{\text{DPO}} = -\log \sigma\left(\beta\left[\log \frac{\pi_\theta(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \log \frac{\pi_\theta(y_l|x)}{\pi_{\text{ref}}(y_l|x)}\right]\right)$$
 
 Define the chosen-response log-ratio:
 
-$$
-r_w
-===
-
-## \log \pi_\theta(y_w|x)
-
-\log \pi_{\text{ref}}(y_w|x)
-$$
+$$r_w = \log \pi_\theta(y_w|x) - \log \pi_{\text{ref}}(y_w|x)$$
 
 and the rejected-response log-ratio:
 
-$$
-r_l
-===
-
-## \log \pi_\theta(y_l|x)
-
-\log \pi_{\text{ref}}(y_l|x)
-$$
+$$r_l = \log \pi_\theta(y_l|x) - \log \pi_{\text{ref}}(y_l|x)$$
 
 Then:
 
-$$
-L_{\text{DPO}}
-==============
-
--\log \sigma
-\left(
-\beta(r_w-r_l)
-\right)
-$$
+$$L_{\text{DPO}} = -\log \sigma\left(\beta(r_w-r_l)\right)$$
 
 The scratch implementation explicitly computes each component instead of hiding the calculation behind a high-level trainer.
 
@@ -376,33 +297,21 @@ and creates response-only masks so that prompt tokens do not contribute to the s
 
 For a response sequence:
 
-$$
-y=(y_1,\ldots,y_T)
-$$
+$$y=(y_1,\ldots,y_T)$$
 
 the response log-probability is:
 
-$$
-\log \pi(y|x)
-=============
-
-\sum_{t=1}^{T}
-m_t \log \pi(y_t|x,y_{<t})
-$$
+$$\log \pi(y|x) = \sum_{t=1}^{T} m_t \log \pi(y_t|x,y_{<t})$$
 
 where:
 
-$$
-m_t \in {0,1}
-$$
+$$m_t \in \{0,1\}$$
 
 is the response mask.
 
 For a batch of size $B$, the resulting sequence log-probabilities have shape:
 
-$$
-\mathbf{L}\in\mathbb{R}^{B}
-$$
+$$\mathbf{L}\in\mathbb{R}^{B}$$
 
 rather than being token-level losses.
 
@@ -456,9 +365,7 @@ assert torch.allclose(
 
 The target is:
 
-$$
-|L_{\text{scratch}} - L_{\text{TRL}}| < 10^{-5}
-$$
+$$|L_{\text{scratch}} - L_{\text{TRL}}| < 10^{-5}$$
 
 The comparison is performed at multiple levels:
 
@@ -567,12 +474,7 @@ A subset of at least **100 preference pairs** is independently double-annotated.
 
 Cohen's kappa is computed as:
 
-$$
-\kappa
-======
-
-\frac{p_o-p_e}{1-p_e}
-$$
+$$\kappa = \frac{p_o-p_e}{1-p_e}$$
 
 where:
 
@@ -611,9 +513,7 @@ all linear
 
 The initial fixed-rank comparison uses:
 
-$$
-r=16
-$$
+$$r=16$$
 
 followed by rank experiments.
 
@@ -641,11 +541,7 @@ The final SFT report records:
 
 The selected configuration should provide a reasonable trade-off between:
 
-$$
-\text{quality},\quad
-\text{VRAM},\quad
-\text{training speed}
-$$
+$$\text{quality},\quad \text{VRAM},\quad \text{training speed}$$
 
 ---
 
@@ -657,9 +553,7 @@ The production implementation uses TRL.
 
 The main DPO experiment varies:
 
-$$
-\beta
-$$
+$$\beta$$
 
 while tracking:
 
@@ -685,19 +579,11 @@ Measures whether alignment preserves or improves performance on Algerian-context
 
 For a held-out preference triple:
 
-$$
-(x,y_w,y_l)
-$$
+$$(x,y_w,y_l)$$
 
 the model is considered preference-correct when:
 
-$$
-\log \pi(y_w|x)
-
->
-
-\log \pi(y_l|x)
-$$
+$$\log \pi(y_w|x) > \log \pi(y_l|x)$$
 
 This measures whether the model assigns higher likelihood to the preferred response.
 
@@ -724,10 +610,10 @@ The central comparison is:
 evaluated across:
 
 | Model | AlgerianMMLU | Preference Accuracy | Win Rate |
-| ----- | -----------: | ------------------: | -------: |
-| Base  |            — |                   — |        — |
-| SFT   |            — |                   — |        — |
-| DPO   |            — |                   — |        — |
+| ----- | -----------: | -------------------: | -------: |
+| Base  |            — |                    — |        — |
+| SFT   |            — |                    — |        — |
+| DPO   |            — |                    — |        — |
 
 This separates:
 
@@ -800,7 +686,7 @@ This provides evidence about the reliability of automated preference evaluation.
 The project is considered complete only when major claims have corresponding evidence.
 
 | Claim                                  | Evidence                         |
-| -------------------------------------- | -------------------------------- |
+| --------------------------------------- | --------------------------------- |
 | Scratch DPO is implemented correctly   | TRL numerical parity             |
 | Loss implementation is correct         | `torch.allclose(..., atol=1e-5)` |
 | Scratch training works                 | English smoke/full run           |
@@ -819,7 +705,7 @@ The project is considered complete only when major claims have corresponding evi
 # Execution Plan
 
 | Week  | Focus                       | Main Evidence                     |
-| ----- | --------------------------- | --------------------------------- |
+| ----- | ---------------------------- | ----------------------------------- |
 | **1** | Scratch DPO mechanics       | TRL parity                        |
 | **2** | Scratch training            | English run + health report       |
 | **3** | Darija data + SFT           | $\kappa$ + SFT sweep              |
@@ -1026,4 +912,3 @@ Implementation decisions and experimental notes are documented in `notes/`, whil
 # License
 
 See [`LICENSE`](LICENSE).
-
