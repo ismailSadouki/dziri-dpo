@@ -526,7 +526,7 @@ LoRA and QLoRA configurations are compared where hardware permits.
 Different fractions of the available SFT data are evaluated.
 
 ---
-
+<!--
 # SFT Experiment Table
 
 The final SFT report records:
@@ -544,7 +544,7 @@ The selected configuration provides a reasonable trade-off between:
 $$\text{quality},\quad \text{VRAM},\quad \text{training speed}$$
 
 ---
-
+-->
 # DPO Training
 
 The best SFT checkpoint becomes the starting point for production DPO.
@@ -607,6 +607,7 @@ The central comparison is:
                      DPO
 ```
 
+<!--
 evaluated across:
 
 | Model | AlgerianMMLU | Preference Accuracy | Win Rate |
@@ -622,6 +623,7 @@ This separates:
 * generation quality
 
 rather than treating a single metric as evidence of improvement.
+-->
 
 ---
 
