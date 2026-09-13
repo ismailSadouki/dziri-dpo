@@ -301,7 +301,7 @@ $$y=(y_1,\ldots,y_T)$$
 
 the response log-probability is:
 
-$$\log \pi(y|x) = \sum_{t=1}^{T} m_t \log \pi(y_t|x,y_{<t})$$
+$$\log{\pi(y|x)} = \sum_{t=1}^{T} m_t \log{\pi(y_t|x,y_{<t})}$$
 
 where:
 
