@@ -141,6 +141,12 @@ SFT instruction data
         ↓
 preference pairs
         ↓
+human preference review
+        ↓
+confound analysis
+        ↓
+double-annotation sample
+        ↓
 annotation agreement
         ↓
 SFT
