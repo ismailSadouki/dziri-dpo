@@ -1,0 +1,70 @@
+You are generating candidate preference pairs for a research dataset on Algerian Darija.
+
+INPUT:
+A JSONL file containing 132 reviewed Algerian Darija instruction examples.
+
+For EVERY input row:
+
+1. Keep the original `id`, `prompt`, `category`, and `script` unchanged.
+2. Keep the original SFT response as `chosen`.
+3. Generate exactly ONE plausible but inferior `rejected` response.
+4. The rejected response must still be a reasonable attempt to answer the prompt.
+5. Do NOT make the rejected response nonsense, random, extremely short, or obviously broken.
+6. The difference between chosen and rejected should represent a meaningful quality difference.
+
+IMPORTANT DISTINCTION:
+
+- `category` describes WHAT THE USER'S PROMPT IS ABOUT.
+- `preference_reason` describes WHY the chosen response is better.
+
+`preference_reason` MUST be exactly one of:
+
+instruction_adherence
+factual_correctness
+dialect_authenticity
+fluency
+safety
+cultural_appropriateness
+helpfulness
+conciseness
+
+NEVER use the category as `preference_reason`.
+
+Examples:
+- category = "humor"
+  preference_reason = "fluency"
+- category = "algerian_culture"
+  preference_reason = "factual_correctness"
+- category = "technical"
+  preference_reason = "instruction_adherence"
+
+Use `rejected_failure_mode` to describe the main weakness of the rejected answer. It should normally match `preference_reason`.
+
+Generate a diverse set of failure modes across the dataset.
+
+The human annotator will later decide whether the chosen answer is actually preferred. Do NOT treat your generated preference_reason as ground truth.
+
+Output ONLY valid JSONL.
+
+Each output row MUST have exactly this structure:
+
+{
+  "id": "...",
+  "prompt": "...",
+  "chosen": "...",
+  "rejected": "...",
+  "source": "instruction_dataset_v1",
+  "generation_method": "llm_generated_rejected",
+  "category": "...",
+  "script": "...",
+  "metadata": {
+    "dialect": "algerian_darija",
+    "preference_reason": "...",
+    "rejected_failure_mode": "...",
+    "human_review": false,
+    "quality_status": "candidate"
+  }
+}
+
+Do not modify the original prompt or chosen response.
+Do not add explanations outside the JSONL.

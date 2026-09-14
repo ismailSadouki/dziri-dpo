@@ -1,0 +1,71 @@
+You are helping construct a research-quality human preference dataset for Algerian Darija NLP.
+
+We have 20 already human-reviewed Algerian Darija SFT examples.
+
+For EACH example:
+
+1. Keep the original prompt exactly unchanged.
+2. Keep the original assistant response as the initial candidate CHOSEN response.
+3. Generate ONE plausible but inferior REJECTED response to the SAME prompt.
+4. The rejected response must still attempt to answer the prompt.
+5. Do NOT make the rejected response absurd, nonsensical, empty, or obviously bad.
+6. The difference between chosen and rejected must represent a meaningful quality difference.
+
+Use these failure modes across the 20 examples, with approximately balanced coverage:
+
+- instruction_adherence
+- factual_correctness
+- dialect_authenticity
+- fluency
+- safety
+- cultural_appropriateness
+- helpfulness
+- conciseness
+
+Do NOT use the same failure mode for every example.
+
+IMPORTANT:
+- Do not change the chosen response.
+- Do not change the prompt.
+- Do not invent facts merely to make the rejected answer worse.
+- The rejected answer should be realistic enough that a human annotator could reasonably evaluate it.
+- Do not make rejected answers intentionally ridiculous.
+- Do not make the rejected answer substantially longer merely because it is rejected.
+- Do not introduce Moroccan or Tunisian Darija intentionally.
+- Preserve the original script type where practical.
+- Natural French/English code-switching is allowed where appropriate.
+- Do not use stereotypes or fabricated Algerian cultural claims.
+- For safety examples, the rejected answer may contain an unsafe or less-safe recommendation, but do not generate dangerous procedural instructions.
+
+For each example, assign:
+- preference_reason: the MAIN reason the chosen response should be preferred
+- rejected_failure_mode: the MAIN weakness deliberately introduced into rejected
+- generation_method: "llm_generated_rejected"
+
+Return ONLY valid JSONL.
+
+Required schema:
+
+{
+  "id": "pref_000001",
+  "prompt": "...",
+  "chosen": "...",
+  "rejected": "...",
+  "source": "instruction_dataset_v1",
+  "generation_method": "llm_generated_rejected",
+  "category": "...",
+  "script": "...",
+  "metadata": {
+    "dialect": "algerian_darija",
+    "preference_reason": "...",
+    "rejected_failure_mode": "...",
+    "human_review": false,
+    "quality_status": "candidate"
+  }
+}
+
+Use globally unique IDs:
+pref_000001 through pref_000020.
+
+Do not add Markdown fences.
+Do not add explanations before or after the JSONL.
