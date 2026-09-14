@@ -1,0 +1,329 @@
+Generate 20 candidate instruction-response examples for Algerian Darija in the category `safety`.
+
+The goal is to create high-quality supervised fine-tuning data for an Algerian Darija language model that can give practical, cautious, and responsible safety advice naturally in Algerian Darija.
+
+## Core language requirements
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must naturally be written in Algerian Darija.
+3. The dataset MUST contain realistic variation in writing style and script.
+4. Do NOT generate all examples in Arabic script.
+5. Use this target script distribution:
+
+   * 12 primarily Arabic script
+   * 4 primarily Arabizi/Latin script
+   * 4 mixed Arabic + natural French/English code-switching
+6. Arabizi examples must look like realistic Algerian online writing, not mechanical transliteration.
+7. Arabic-script examples must sound authentically Algerian, not Modern Standard Arabic.
+8. Mixed examples may naturally contain French or English terms when Algerians would realistically use them.
+9. Do not force French or English into every example.
+10. Do not use Moroccan or Tunisian Darija.
+11. Avoid excessive MSA vocabulary and sentence structure.
+
+## Safety category
+
+Focus on practical everyday safety and risk prevention.
+
+Include a diverse mixture of:
+
+* home safety
+* electrical safety
+* fire safety
+* kitchen safety
+* road and pedestrian safety
+* car safety
+* public transport safety
+* online safety
+* account security
+* phishing and scams
+* privacy
+* phone/computer security
+* suspicious links and files
+* public Wi-Fi
+* basic workplace safety
+* emergency situations
+* weather-related safety
+* basic first-aid awareness
+* recognizing when professional help is needed
+* safe handling of common household situations
+
+The goal is to teach safe decision-making, not to provide dangerous procedures.
+
+## Safety-first behavior
+
+The assistant should:
+
+1. Prioritize immediate safety when there is an active danger.
+2. Recommend moving away from danger when appropriate.
+3. Recommend contacting emergency services or a qualified professional when necessary.
+4. Give simple, actionable steps.
+5. Avoid unnecessary risky experimentation.
+6. Clearly communicate uncertainty when the situation cannot be assessed remotely.
+7. Avoid pretending to diagnose a medical problem.
+8. Avoid pretending to provide definitive legal advice.
+9. Avoid claiming that a particular action is guaranteed to solve a dangerous situation.
+
+## Emergency situations
+
+Include several realistic scenarios involving potential immediate danger.
+
+Examples can involve:
+
+* smell of gas
+* electrical sparks
+* smoke or fire
+* someone receiving an electric shock
+* road accidents
+* suspicious objects
+* severe allergic reaction
+* serious injury
+* someone becoming unconscious
+* dangerous weather
+
+For urgent situations, prioritize:
+
+* getting to a safe place
+* avoiding direct contact with hazards
+* contacting appropriate emergency services
+* seeking qualified professional help
+
+Do not generate detailed instructions that could worsen the situation.
+
+## Medical and first-aid content
+
+Keep medical content basic and safety-oriented.
+
+Appropriate examples include:
+
+* what to do immediately after a minor burn
+* when an injury needs professional attention
+* basic response to fainting
+* recognizing that certain symptoms require urgent medical evaluation
+* basic prevention advice
+
+Do NOT:
+
+* diagnose serious diseases
+* prescribe medication or dosages
+* recommend stopping prescribed medication
+* give dangerous medical procedures
+* provide false certainty
+* replace professional medical care
+
+If symptoms could indicate a serious emergency, advise seeking urgent medical help.
+
+## Electrical and fire safety
+
+Examples may cover:
+
+* overloaded power strips
+* damaged cables
+* water near electrical equipment
+* sparks from an outlet
+* smoke from an appliance
+* small kitchen fires
+* smoke alarms
+* leaving cooking unattended
+
+Do not provide instructions for dangerous electrical repairs.
+
+Do not tell users to touch, open, dismantle, or repair dangerous electrical equipment themselves.
+
+When there is significant electrical or fire danger, recommend disconnecting power only if it can be done safely and contacting qualified help.
+
+## Online safety
+
+Include realistic situations involving:
+
+* phishing messages
+* suspicious links
+* fake login pages
+* stolen passwords
+* reused passwords
+* two-factor authentication
+* suspicious downloads
+* account recovery
+* privacy settings
+* public Wi-Fi
+* scams
+* fake marketplaces or sellers
+
+Give defensive advice only.
+
+Do NOT provide instructions for stealing credentials, bypassing authentication, exploiting systems, malware, or unauthorized access.
+
+## Scam and fraud awareness
+
+Examples can involve:
+
+* suspicious payment requests
+* fake prizes
+* impersonation
+* urgent requests for passwords or verification codes
+* suspicious marketplace offers
+* fake customer-support messages
+
+The assistant should help the user identify warning signs and protect themselves.
+
+Do not accuse a person or company of fraud without evidence.
+
+Use phrases such as "ممكن يكون scam" or "كاين علامات تخلي العرض مشبوه" when appropriate.
+
+## Road and transport safety
+
+Examples may cover:
+
+* distracted driving
+* seat belts
+* pedestrians
+* motorcycles
+* crossing roads
+* driving in poor weather
+* fatigue while driving
+* public transport situations
+
+Do not encourage dangerous driving behavior.
+
+Keep recommendations practical and prevention-focused.
+
+## Accuracy and uncertainty
+
+1. Do not invent emergency numbers unless the prompt explicitly provides them.
+2. Do not invent laws or regulations.
+3. Do not invent medical facts.
+4. Do not claim that a safety procedure is universally appropriate.
+5. If the correct response depends on the exact situation, say what information matters.
+6. When the safest option is to contact a professional, say so clearly.
+7. Never prioritize convenience over immediate safety.
+
+## Algerian conversational style
+
+The assistant should sound like an Algerian person giving practical advice.
+
+Natural vocabulary may include:
+
+* خطر
+* حذر
+* طفا
+* كهرباء
+* دخان
+* نار
+* طريق
+* سيارة
+* حادث
+* حساب
+* كلمة السر
+* رابط
+* scam
+* message
+* urgence
+* médecin
+* pompier
+
+Use French/English terminology only when natural.
+
+Do not force foreign vocabulary into every example.
+
+## Script distribution
+
+Examples 1–12:
+
+* primarily Arabic-script Algerian Darija
+
+Examples 13–16:
+
+* primarily Arabizi/Latin-script Algerian Darija
+
+Examples 17–20:
+
+* mixed Arabic + natural French/English
+
+Set the `script` field as follows:
+
+* examples 1–12: `"arabic"`
+* examples 13–16: `"arabizi"`
+* examples 17–20: `"mixed"`
+
+The `script` field describes the dominant writing script of the Darija content.
+
+## Diversity requirements
+
+Make the 20 examples meaningfully different.
+
+Vary:
+
+* type of safety issue
+* home vs road vs online vs workplace
+* prevention vs immediate response
+* question length
+* response length
+* script
+* conversational style
+* severity of the situation
+
+Do NOT make most examples about cybersecurity.
+
+Do NOT make most examples about medical situations.
+
+Do NOT make every example an emergency.
+
+Include both prevention questions and situations requiring immediate action.
+
+Do not create near-duplicate examples.
+
+## Response quality
+
+1. Actually answer the safety question.
+2. Prioritize the safest reasonable action.
+3. Use natural Algerian Darija.
+4. Be clear and practical.
+5. Avoid unnecessary alarmism.
+6. Avoid generic filler.
+7. Do not provide dangerous or reckless instructions.
+8. Correct unsafe assumptions when necessary.
+9. Clearly distinguish urgent situations from routine precautions.
+10. Keep responses reasonably concise.
+
+## Output format
+
+Output ONLY valid JSONL.
+
+Generate exactly 20 objects, one per line.
+
+Use these candidate IDs exactly:
+
+safety_000001
+safety_000002
+...
+safety_000020
+
+Each object must have exactly this structure:
+
+{
+"candidate_id": "safety_000001",
+"messages": [
+{
+"role": "user",
+"content": "..."
+},
+{
+"role": "assistant",
+"content": "..."
+}
+],
+"category": "safety",
+"script": "arabic",
+"generation_method": "llm",
+"generation_model": "GPT-5.6 Luna"
+}
+
+For examples 13–16 use:
+
+"script": "arabizi"
+
+For examples 17–20 use:
+
+"script": "mixed"
+
+No markdown.
+No explanations outside the JSONL.

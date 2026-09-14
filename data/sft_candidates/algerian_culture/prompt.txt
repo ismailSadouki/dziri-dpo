@@ -1,0 +1,239 @@
+Generate 20 candidate instruction-response examples for Algerian Darija in the category `algerian_culture`.
+
+The goal is to create high-quality supervised fine-tuning data for an Algerian Darija language model.
+
+## Core language requirements
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must naturally be written in Algerian Darija.
+3. The dataset MUST contain realistic variation in writing style and script.
+4. Do NOT generate all examples in Arabic script.
+5. Use this target script distribution:
+
+   * 12 primarily Arabic script
+   * 4 primarily Arabizi/Latin script
+   * 4 mixed Arabic + natural French/English code-switching
+6. Arabizi examples must look like realistic Algerian online writing, not mechanical transliteration.
+7. Arabic-script examples must sound authentically Algerian, not Modern Standard Arabic.
+8. Mixed examples may naturally contain French or English terms when Algerians would realistically use them.
+9. Do not force French or English into examples where it would sound unnatural.
+10. Do not use Moroccan or Tunisian Darija.
+11. Avoid excessive MSA vocabulary and sentence structure.
+
+## Algerian culture category
+
+Focus specifically on Algerian cultural knowledge, practices, expressions, history, traditions, food, social customs, regional diversity, and everyday cultural concepts.
+
+Include a diverse mixture of:
+
+* Algerian food and dishes
+* traditional clothing
+* weddings and marriage customs
+* Ramadan and Eid practices in Algeria
+* hospitality and visiting customs
+* family and social customs
+* traditional celebrations
+* music and cultural traditions
+* crafts and traditional arts
+* Algerian expressions and their cultural meaning
+* regional cultural differences
+* differences between Algerian regions
+* traditional architecture and cultural heritage
+* historical/cultural landmarks
+* Algerian linguistic practices
+* Darija expressions influenced by French, Arabic, Tamazight, or other languages
+* customs surrounding guests, food, family, and celebrations
+* contemporary Algerian culture when relevant
+
+Questions should feel like things an Algerian person, an Algerian student, or someone learning about Algeria could naturally ask.
+
+## Regional diversity
+
+Do NOT treat Algeria as culturally homogeneous.
+
+Where appropriate, include references to different regions such as:
+
+* Algiers
+* Oran
+* Constantine
+* Tlemcen
+* Kabylie
+* the Aurès
+* the M'zab
+* the Sahara
+* eastern Algeria
+* western Algeria
+* southern Algeria
+
+However:
+
+1. Do not force regional references into every example.
+2. Do not imply that a custom is universal if it is mainly associated with one region.
+3. When a tradition varies by region or family, say so naturally.
+4. Avoid stereotypes about Algerian regions or communities.
+5. Do not invent regional customs.
+
+## Cultural accuracy
+
+This is especially important.
+
+1. Do not invent traditions, dishes, historical facts, festivals, or customs.
+2. Do not present uncertain information as certain.
+3. If a practice varies between families or regions, acknowledge the variation.
+4. Distinguish between a widely practiced Algerian custom and a practice specific to a particular region or community.
+5. Avoid exaggerated claims such as "all Algerians do this."
+6. Avoid political claims unless they are necessary to answer the question.
+7. Do not fabricate historical origins for traditions.
+8. Do not claim that a dish, word, tradition, or clothing style is exclusively Algerian when its origins are shared or disputed.
+9. When the exact origin is uncertain or debated, say so naturally.
+10. Prefer simple, reliable cultural explanations over elaborate historical stories.
+
+## Important cultural distinction
+
+Do not confuse:
+
+* Algerian culture with generic Arab culture
+* Algerian Darija with MSA
+* Algerian traditions with Moroccan or Tunisian traditions
+* one Algerian region's traditions with nationwide traditions
+* contemporary Algerian practices with historical practices
+
+The goal is authentic Algerian cultural knowledge, not generic "Arab culture" content translated into Darija.
+
+## Response quality
+
+1. Actually answer the question.
+2. Give useful cultural context rather than a one-sentence definition.
+3. Keep responses reasonably concise.
+4. Use natural Algerian conversational phrasing.
+5. Avoid encyclopedia-style writing.
+6. Avoid generic filler such as "هذا جزء مهم من الثقافة الجزائرية".
+7. Vary response length and structure.
+8. Some answers can mention regional or family variation.
+9. Do not over-explain obvious facts.
+10. Do not repeatedly use the same examples or cultural topics.
+11. Make the response sound like a knowledgeable Algerian speaker explaining something naturally.
+
+## Question diversity
+
+Across the 20 examples, include different types of questions:
+
+* "وش معناها...؟"
+* "علاش...؟"
+* "كيفاش...؟"
+* "واش الفرق بين...؟"
+* "منين جا...؟"
+* "هل هذا الشي منتشر في كامل الجزائر؟"
+* questions about regional differences
+* questions about the meaning of expressions
+* questions comparing traditional and modern practices
+* questions about food or clothing
+* questions about celebrations
+* questions about social customs
+
+Do not make all questions simple definitions.
+
+## Script distribution
+
+Examples 1–12:
+
+* primarily Arabic script
+* authentic Algerian Darija
+
+Examples 13–16:
+
+* primarily Arabizi/Latin script
+* realistic Algerian online writing
+
+Examples 17–20:
+
+* mixed Arabic + natural French/English code-switching
+
+For Arabizi examples, use realistic Algerian online spelling rather than mechanically transliterating every Arabic word.
+
+For mixed examples, code-switch naturally with words such as:
+
+* mariage
+* famille
+* tradition
+* fête
+* patrimoine
+* musique
+* région
+* costume
+* recette
+* culture
+
+Only use these when they naturally fit.
+
+## Diversity requirements
+
+Make the 20 examples meaningfully different.
+
+Vary:
+
+* region
+* cultural topic
+* question type
+* question length
+* response length
+* conversational style
+* script
+* degree of cultural specificity
+
+Do not repeatedly ask about food.
+
+Do not make all examples about Ramadan or weddings.
+
+Do not repeatedly use the same Algerian cities.
+
+Do not create near-duplicate questions.
+
+## Output format
+
+Output ONLY valid JSONL.
+
+Generate exactly 20 objects, one per line.
+
+Use these candidate IDs exactly:
+
+reasoning_000001
+...
+
+Actually, use:
+
+algerian_culture_000001
+algerian_culture_000002
+...
+algerian_culture_000020
+
+Each object must have exactly this structure:
+
+{
+"candidate_id": "algerian_culture_000001",
+"messages": [
+{
+"role": "user",
+"content": "..."
+},
+{
+"role": "assistant",
+"content": "..."
+}
+],
+"category": "algerian_culture",
+"script": "arabic",
+"generation_method": "llm",
+"generation_model": "GPT-5.6 Luna"
+}
+
+For examples 13–16 use:
+
+"script": "arabizi"
+
+For examples 17–20 use:
+
+"script": "mixed"
+
+No markdown.
+No explanations outside the JSONL.

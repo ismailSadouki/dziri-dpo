@@ -1,0 +1,351 @@
+Generate 20 candidate instruction-response examples for Algerian Darija in the category `technical`.
+
+The goal is to create high-quality supervised fine-tuning data for an Algerian Darija language model that can explain technical concepts and solve practical technical problems naturally in Algerian Darija.
+
+## Core language requirements
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must naturally be written in Algerian Darija.
+3. The dataset MUST contain realistic variation in writing style and script.
+4. Do NOT generate all examples in Arabic script.
+5. Use this target script distribution:
+
+   * 12 primarily Arabic script
+   * 4 primarily Arabizi/Latin script
+   * 4 mixed Arabic + natural French/English code-switching
+6. Arabizi examples must look like realistic Algerian online writing, not mechanical transliteration.
+7. Arabic-script examples must sound authentically Algerian, not Modern Standard Arabic.
+8. Mixed examples may naturally contain French or English technical terminology.
+9. Do not force French or English into every example.
+10. Do not use Moroccan or Tunisian Darija.
+11. Avoid excessive MSA vocabulary and sentence structure.
+
+## Technical category
+
+Focus on practical technical knowledge and troubleshooting.
+
+Cover a diverse mixture of:
+
+* computers
+* operating systems
+* Linux
+* Windows concepts
+* smartphones
+* networking
+* Wi-Fi
+* internet
+* browsers
+* storage
+* RAM
+* CPUs
+* GPUs
+* filesystems
+* backups
+* software installation
+* applications
+* programming fundamentals
+* Python
+* Git/GitHub
+* APIs
+* databases
+* web concepts
+* cybersecurity basics
+* machine learning concepts
+* AI/LLM concepts
+* cloud/computing concepts
+* debugging
+* performance problems
+
+Do NOT make all examples about programming or AI.
+
+## Technical explanations
+
+When explaining a concept:
+
+1. Explain what it means in simple Algerian Darija.
+2. Give a concrete example when useful.
+3. Avoid unnecessary jargon.
+4. If technical terminology is necessary, use it naturally.
+5. Do not oversimplify to the point of becoming inaccurate.
+6. Distinguish related concepts clearly.
+7. Do not invent technical facts.
+
+Examples can ask things such as:
+
+* what something does
+* why something happens
+* how two technologies differ
+* why a system behaves a certain way
+* what a technical term means
+* when a technology is useful
+* what happens behind the scenes
+* what to check when something stops working
+
+## Troubleshooting
+
+Include several realistic troubleshooting scenarios.
+
+Examples may involve:
+
+* Wi-Fi connected but internet not working
+* computer becoming slow
+* storage becoming full
+* application crashing
+* browser problems
+* software installation problems
+* Git errors
+* Python environment problems
+* high RAM usage
+* GPU memory problems
+* overheating
+* slow downloads
+* file permission problems
+* backup failures
+
+The assistant should reason through the likely causes rather than immediately giving a random fix.
+
+When troubleshooting:
+
+1. Identify likely causes.
+2. Suggest practical checks.
+3. Give steps in a sensible order.
+4. Start with simple, low-risk checks.
+5. Explain what the result of a check means when useful.
+6. Do not recommend destructive commands or actions unnecessarily.
+
+## Programming and technical reasoning
+
+Some examples may involve simple programming concepts such as:
+
+* variables
+* functions
+* loops
+* exceptions
+* packages
+* virtual environments
+* Git branches
+* APIs
+* JSON
+* HTTP
+* databases
+
+Keep the explanations accessible.
+
+Do not turn the dataset into a programming-course dataset.
+
+Avoid advanced algorithms or long code unless the example genuinely requires a small code snippet.
+
+If code is included, keep it short and explain what it does.
+
+## AI / ML examples
+
+Include a small number of examples involving:
+
+* machine learning
+* neural networks
+* training vs inference
+* embeddings
+* transformers
+* LLMs
+* GPU memory
+* quantization
+* fine-tuning
+
+Explain these concepts accurately but conversationally.
+
+Do not make the category primarily about AI.
+
+## Linux examples
+
+Include some realistic Linux-related examples where appropriate.
+
+Possible topics:
+
+* permissions
+* processes
+* disk usage
+* package installation
+* environment variables
+* services
+* filesystem mounting
+* terminal commands
+* CPU/RAM usage
+
+Do not generate dangerous commands or commands that could destroy data.
+
+If a command can modify or delete important data, explain the risk rather than casually recommending it.
+
+## Cybersecurity
+
+Include only basic defensive/security concepts.
+
+Examples can cover:
+
+* strong passwords
+* two-factor authentication
+* phishing
+* permissions
+* software updates
+* suspicious links
+* public Wi-Fi risks
+* backups
+
+Do not generate malware, credential theft, exploitation instructions, or offensive hacking procedures.
+
+## Accuracy requirements
+
+1. Do not invent technical specifications.
+2. Do not claim that a troubleshooting step is guaranteed to work.
+3. If multiple causes are possible, explain that.
+4. If information is insufficient, say what should be checked.
+5. Distinguish between general guidance and device-specific behavior.
+6. Do not fabricate error messages or system behavior.
+7. Keep explanations technically correct.
+
+## Algerian conversational style
+
+The assistant should sound like an Algerian person explaining technology to another Algerian person.
+
+Natural terms may include:
+
+* ordinateur
+* téléphone
+* réseau
+* connexion
+* application
+* fichier
+* dossier
+* système
+* écran
+* clavier
+* disque
+* mémoire
+* serveur
+* compte
+* mot de passe
+* mise à jour
+* problème
+* solution
+
+English technical terminology is also natural in many contexts:
+
+* driver
+* browser
+* cache
+* backend
+* frontend
+* server
+* API
+* model
+* training
+* inference
+* GPU
+* RAM
+* bug
+* framework
+
+Do not force these words into every example.
+
+## Script distribution
+
+Examples 1–12:
+
+* primarily Arabic-script Algerian Darija
+
+Examples 13–16:
+
+* primarily Arabizi/Latin-script Algerian Darija
+
+Examples 17–20:
+
+* mixed Arabic + natural French/English technical terminology
+
+Set the `script` field as follows:
+
+* examples 1–12: `"arabic"`
+* examples 13–16: `"arabizi"`
+* examples 17–20: `"mixed"`
+
+The `script` field describes the dominant writing script of the Darija content.
+
+## Diversity requirements
+
+Make the 20 examples meaningfully different.
+
+Vary:
+
+* technical domain
+* explanation vs troubleshooting
+* difficulty
+* question length
+* response length
+* user intent
+* script
+* amount of technical terminology
+* everyday vs professional context
+
+Do NOT:
+
+* make every example about computers
+* make every example about programming
+* make every example about AI
+* make every example a troubleshooting question
+* repeatedly explain the same concept
+* create near-duplicate questions
+
+## Response quality
+
+1. Actually answer the technical question.
+2. Use natural Algerian Darija.
+3. Explain enough to be useful.
+4. Avoid unnecessary verbosity.
+5. Avoid generic filler.
+6. Do not blindly agree with incorrect assumptions in the user's question.
+7. Correct misconceptions naturally when necessary.
+8. Use examples when they improve understanding.
+9. Keep technical terminology accurate.
+10. Vary response structure and length.
+
+## Output format
+
+Output ONLY valid JSONL.
+
+Generate exactly 20 objects, one per line.
+
+Use these candidate IDs exactly:
+
+technical_000001
+technical_000002
+...
+technical_000020
+
+Each object must have exactly this structure:
+
+{
+"candidate_id": "technical_000001",
+"messages": [
+{
+"role": "user",
+"content": "..."
+},
+{
+"role": "assistant",
+"content": "..."
+}
+],
+"category": "technical",
+"script": "arabic",
+"generation_method": "llm",
+"generation_model": "GPT-5.6 Luna"
+}
+
+For examples 13–16 use:
+
+"script": "arabizi"
+
+For examples 17–20 use:
+
+"script": "mixed"
+
+No markdown.
+No explanations outside the JSONL.

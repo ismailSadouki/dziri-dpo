@@ -1,0 +1,122 @@
+Generate 20 candidate instruction-response examples for Algerian Darija in the category "general_qa".
+
+The goal is to create high-quality supervised fine-tuning data for an Algerian Darija language model.
+
+## Core language requirements
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must be naturally phrased in Algerian Darija.
+3. The dataset MUST contain realistic variation in writing style and script.
+4. Do NOT generate all examples in Arabic script.
+5. Target approximately:
+
+   * 12 examples primarily in Arabic script
+   * 4 examples primarily in Arabizi/Latin script
+   * 4 examples using natural mixed-script or code-switched Darija.
+6. Arabizi must look like realistic Algerian online writing, not a transliteration exercise.
+7. Arabic-script Darija should use authentic Algerian vocabulary and phrasing rather than MSA.
+8. Mixed French/English terminology is allowed when naturally used by Algerian speakers.
+9. Do not force French or English into examples where it would sound unnatural.
+10. Do not use Moroccan or Tunisian Darija.
+11. Avoid excessive MSA unless the question genuinely requires a formal term.
+
+## General QA requirements
+
+Create realistic questions that an Algerian user might ask a general-purpose assistant.
+
+Cover a diverse range of topics such as:
+
+* everyday factual questions
+* simple science
+* geography
+* history
+* technology
+* health/general wellness information
+* education
+* money and practical concepts
+* language questions
+* common "why/how" questions
+* explanations of common concepts
+* comparisons between ordinary things
+* practical knowledge
+* interpreting common situations
+
+Do NOT turn this category into "daily life".
+The focus should be answering general questions and explaining information, rather than planning someone's personal day or solving household situations.
+
+## Quality requirements
+
+1. Every assistant response must actually answer the user's question.
+2. Answers should be concise but informative.
+3. Avoid generic filler such as "أكيد، بالطبع..." unless it sounds genuinely natural.
+4. Do not invent facts.
+5. Do not make unsupported medical, financial, or legal claims.
+6. When a topic requires uncertainty, express it naturally.
+7. Avoid repetitive question/answer structures.
+8. Vary response length naturally.
+9. Avoid producing 20 examples that all follow the same linguistic pattern.
+10. Questions should be meaningfully different from each other.
+11. Do not create artificial benchmark-style questions.
+12. Prefer realistic Algerian conversational phrasing.
+
+## Script distribution
+
+Make the distribution approximately:
+
+* Examples 1–12: primarily Arabic script
+* Examples 13–16: primarily Arabizi/Latin-script Algerian Darija
+* Examples 17–20: mixed Arabic-script Darija with natural French/English code-switching.
+
+The Arabizi examples should look like something an Algerian might actually type online.
+
+For example, natural Arabizi is acceptable:
+
+"wach الفرق بين..."
+
+or:
+
+"ch7al من وقت يحتاج..."
+
+but DO NOT mechanically transliterate every Arabic word just to satisfy the requirement.
+
+Mixed examples may naturally contain terms such as:
+
+"application", "internet", "CV", "ordinateur", "deadline", "data", etc., when appropriate.
+
+## Output format
+
+Return ONLY valid JSONL, one object per line.
+
+Use globally unique candidate IDs:
+
+general_qa_000001 through general_qa_000020
+
+Each object must have exactly this structure:
+
+{
+"candidate_id": "general_qa_000001",
+"messages": [
+{
+"role": "user",
+"content": "..."
+},
+{
+"role": "assistant",
+"content": "..."
+}
+],
+"category": "general_qa",
+"script": "arabic",
+"generation_method": "llm",
+"generation_model": "..."
+}
+
+For the Arabizi examples, set:
+
+"script": "arabizi"
+
+For mixed-script examples, set:
+
+"script": "mixed"
+
+Do not add explanations, markdown, numbering, or code fences outside the JSONL objects.

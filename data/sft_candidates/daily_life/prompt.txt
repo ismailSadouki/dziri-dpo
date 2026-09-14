@@ -1,0 +1,65 @@
+Generate 20 candidate instruction-response examples for
+Algerian Darija in the category "daily_life".
+
+The goal is to create high-quality supervised fine-tuning data
+for an Algerian Darija language model.
+
+Requirements:
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must be naturally phrased in Algerian
+   Darija.
+3. Arabic script is preferred, but natural technical English or
+   French terms are allowed.
+4. Do not use Moroccan Darija, Tunisian Darija, or MSA-heavy
+   phrasing unless it is naturally required by the context.
+5. The examples should represent realistic everyday situations
+   involving Algerian users.
+6. Responses should be helpful, natural, concise, and conversational.
+7. Avoid generic or repetitive examples.
+8. Do not make every example a question-answer pair; vary the
+   interaction types.
+9. Include different daily-life situations such as:
+   - planning a day
+   - studying and organizing time
+   - cooking/simple household tasks
+   - transportation
+   - shopping
+   - dealing with appointments
+   - communication with friends/family
+   - practical advice
+   - solving everyday problems
+   - personal organization
+10. Do not include sensitive personal information.
+11. Do not fabricate specific personal experiences.
+12. Code-switching with French/English is allowed when natural,
+    especially for common Algerian usage.
+13. Prefer authentic Algerian vocabulary and phrasing over
+    literal translations from English.
+14. Avoid exaggerated slang or forced dialect.
+15. Each example should contain one user message and one assistant
+    response.
+16. Responses should actually answer the user's request rather than
+    merely acknowledge it.
+
+Return ONLY valid JSONL, one object per line, with this schema:
+
+{
+  "candidate_id": "cand_000001",
+  "messages": [
+    {
+      "role": "user",
+      "content": "..."
+    },
+    {
+      "role": "assistant",
+      "content": "..."
+    }
+  ],
+  "category": "daily_life",
+  "script": "arabic",
+  "generation_method": "llm",
+  "generation_model": "..."
+}
+
+Use candidate IDs cand_000001 through cand_000020.

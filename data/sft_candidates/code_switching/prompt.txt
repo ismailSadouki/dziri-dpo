@@ -1,0 +1,260 @@
+Generate 20 candidate instruction-response examples for Algerian Darija in the category `code_switching`.
+
+The goal is to create high-quality supervised fine-tuning data for an Algerian Darija language model that can understand and produce realistic Algerian code-switched language.
+
+## Core language requirements
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must naturally use Algerian Darija with realistic code-switching when appropriate.
+3. The dataset MUST contain genuine variation in how Algerians mix languages.
+4. Do NOT treat code-switching as simply inserting random French or English words.
+5. Code-switching must be contextually motivated and linguistically natural.
+6. Do not use Moroccan or Tunisian Darija.
+7. Avoid excessive MSA vocabulary.
+8. Arabic-script Darija should sound authentically Algerian.
+9. Arabizi should resemble realistic Algerian online writing, not mechanical transliteration.
+
+## What this category should teach
+
+Focus on situations where Algerian speakers naturally alternate between:
+
+* Algerian Darija + French
+* Algerian Darija + English
+* Darija + French + occasional English
+* Arabic-script Darija + Latin-script technical/common terms
+* Arabizi + French
+* Arabizi + English
+
+The objective is NOT to maximize the number of foreign words.
+
+The objective is to reproduce realistic Algerian linguistic behavior.
+
+## Natural code-switching
+
+Use French or English when it naturally fits the context.
+
+Common realistic contexts include:
+
+* university
+* work
+* technology
+* social media
+* smartphones
+* computers
+* internet
+* shopping
+* transportation
+* administration
+* customer service
+* education
+* professional communication
+* gaming
+* software
+* programming
+* everyday conversation
+
+Natural examples may contain terms such as:
+
+French:
+
+* rendez-vous
+* boulot
+* dossier
+* diplôme
+* stage
+* application
+* ordinateur
+* téléphone
+* problème
+* solution
+* facture
+* livraison
+* voiture
+* message
+* formation
+* entretien
+* administration
+
+English:
+
+* deadline
+* meeting
+* update
+* download
+* upload
+* account
+* password
+* software
+* data
+* model
+* training
+* deadline
+* feedback
+* project
+* laptop
+
+Do NOT force these words into examples.
+
+## Important distinction
+
+Do NOT generate sentences like:
+
+"أنا عندي meeting pour le project parce que deadline قريب."
+
+simply to demonstrate code-switching.
+
+Instead, produce code-switching that an Algerian speaker could realistically use in conversation.
+
+For example, a technical context might naturally contain:
+
+"لازم ندير update للapplication قبل ما نعاود نجرب."
+
+The foreign term should serve a communicative purpose.
+
+## French vs English
+
+Do not assume Algerians use French and English equally.
+
+French should appear frequently in contexts where it is naturally common in Algerian speech.
+
+English should appear especially in contexts such as:
+
+* technology
+* programming
+* gaming
+* internet
+* AI
+* software
+* social media
+* academic/research terminology
+
+Some examples can contain both, but this should be occasional rather than forced.
+
+## User/assistant behavior
+
+The examples should not all be "What does this word mean?"
+
+Include realistic interactions such as:
+
+* asking for an explanation
+* asking for advice
+* discussing a technical problem
+* describing a university/work situation
+* asking how to do something
+* comparing options
+* asking for help with an application
+* discussing a purchase
+* asking about software
+* explaining a personal situation
+* asking for a translation or reformulation
+* correcting a misunderstanding
+
+The assistant should respond naturally in Algerian Darija and can mirror the user's code-switching level when appropriate.
+
+## Code-switching intensity
+
+Vary the amount of code-switching.
+
+Some examples should contain:
+
+* only one or two foreign terms
+* several French terms
+* several English technical terms
+* occasional switching between phrases
+* Arabic-script Darija mixed with Latin-script terminology
+* Arabizi mixed with French
+* Arabizi mixed with English
+
+Do NOT make every example heavily code-switched.
+
+Natural Darija-only portions are important.
+
+## Script distribution
+
+Use this target distribution:
+
+Examples 1–8:
+
+* primarily Arabic-script Darija
+* natural French/English code-switching inside the Arabic-script text where appropriate
+
+Examples 9–12:
+
+* primarily Arabic-script Darija
+* stronger but still natural code-switching
+
+Examples 13–16:
+
+* primarily Arabizi/Latin-script Darija
+* realistic Algerian online writing
+* natural French/English mixing
+
+Examples 17–20:
+
+* mixed Arabic + French/English
+* realistic code-switching
+* varied switching intensity
+
+Set the `script` field as follows:
+
+* examples 1–12: `"arabic"`
+* examples 13–16: `"arabizi"`
+* examples 17–20: `"mixed"`
+
+The `script` field describes the dominant writing script of the Darija, not the presence of foreign words.
+
+## Linguistic naturalness
+
+Pay attention to:
+
+* Algerian vocabulary
+* Algerian sentence structure
+* natural placement of French/English words
+* realistic pronunciation/transliteration conventions in Arabizi
+* common Algerian conversational patterns
+* appropriate use of French nouns and technical English terms
+
+Do not mechanically translate French or English expressions into Darija.
+
+Do not make every sentence structurally identical.
+
+## Topics
+
+Across the 20 examples, cover a diverse range of contexts:
+
+* university/studies
+* work
+* technology
+* AI/software
+* phones
+* internet
+* shopping
+* transportation
+* social media
+* everyday conversation
+* customer service
+* administration
+* gaming
+* job applications
+* professional communication
+
+Do not make most examples about technology.
+
+## Response quality
+
+1. The assistant must actually answer the user's question.
+2. Responses should be natural Algerian Darija.
+3. Code-switching should improve naturalness rather than distract from meaning.
+4. Do not insert foreign words unnecessarily.
+5. Do not explain code-switching unless the user asks about it.
+6. Avoid generic filler.
+7. Keep responses reasonably concise.
+8. Vary response length and structure.
+9. Do not invent facts.
+10. Avoid repetitive vocabulary and sentence patterns.
+
+## Avoid these failure modes
+
+Do NOT:
+
+* randomly sprink

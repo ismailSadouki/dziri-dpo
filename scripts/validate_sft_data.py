@@ -1,8 +1,10 @@
+import argparse
 import json
 import sys
 from pathlib import Path
 
-DATA_PATH = Path("data/instruction_dataset.jsonl")
+DEFAULT_DATA_PATH = Path("data/instruction_dataset.jsonl")
+
 
 VALID_CATEGORIES = {
     "education",
@@ -41,15 +43,28 @@ def fail(errors):
 
 
 def main():
-    if not DATA_PATH.exists():
-        fail([f"File not found: {DATA_PATH}"])
+    parser = argparse.ArgumentParser(
+        description="Validate an Algerian Darija SFT dataset."
+    )
+    parser.add_argument(
+        "--input",
+        type=Path,
+        default=DEFAULT_DATA_PATH,
+        help=f"Input JSONL file (default: {DEFAULT_DATA_PATH})",
+    )
+    args = parser.parse_args()
+
+    data_path = args.input
+
+    if not data_path.exists():
+        fail([f"File not found: {data_path}"])
 
     errors = []
     rows = []
     seen_ids = set()
     seen_pairs = set()
 
-    with DATA_PATH.open(encoding="utf-8") as f:
+    with data_path.open(encoding="utf-8") as f:
         for line_no, line in enumerate(f, start=1):
             if not line.strip():
                 continue

@@ -1,0 +1,294 @@
+Generate 20 candidate instruction-response examples for Algerian Darija in the category `humor`.
+
+The goal is to create high-quality supervised fine-tuning data for an Algerian Darija language model that can understand and produce natural, culturally appropriate Algerian humor.
+
+## Core language requirements
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must naturally be written in Algerian Darija.
+3. Humor must feel naturally Algerian rather than translated from English or another language.
+4. The dataset MUST contain realistic variation in writing style and script.
+5. Do NOT generate all examples in Arabic script.
+6. Use this target script distribution:
+
+   * 12 primarily Arabic script
+   * 4 primarily Arabizi/Latin script
+   * 4 mixed Arabic + natural French/English code-switching
+7. Arabizi examples must look like realistic Algerian online writing, not mechanical transliteration.
+8. Arabic-script examples must sound authentically Algerian, not Modern Standard Arabic.
+9. Mixed examples may naturally contain French or English terms when they fit the joke.
+10. Do not use Moroccan or Tunisian Darija.
+11. Avoid excessive MSA vocabulary and sentence structure.
+
+## Humor category
+
+Focus on humor that could realistically appear in Algerian conversations, messages, social media, or interactions with an assistant.
+
+Include a diverse mixture of:
+
+* everyday observational humor
+* relatable Algerian situations
+* playful responses
+* harmless teasing
+* exaggeration
+* irony
+* wordplay
+* misunderstandings
+* funny comparisons
+* short jokes
+* humorous explanations
+* playful reactions
+* self-deprecating humor
+* university/student humor
+* work humor
+* technology humor
+* family/social situations
+* food-related humor
+* transport humor
+* internet/social-media humor
+
+The humor should come naturally from the situation rather than from simply adding "haha".
+
+## Algerian cultural grounding
+
+Where appropriate, use situations familiar to Algerians, such as:
+
+* studying for exams
+* university life
+* waiting for transport
+* bureaucracy and paperwork
+* family interactions
+* Algerian food
+* shopping
+* internet problems
+* smartphones
+* social media
+* work
+* staying up late
+* procrastination
+* everyday misunderstandings
+
+Do NOT assume that every Algerian has the same experience.
+
+Do not turn cultural references into stereotypes.
+
+Do not make every joke about Algeria itself.
+
+## Natural humor
+
+The response should actually be funny or playful.
+
+Avoid:
+
+* generic "Why did the chicken cross the road?" style jokes
+* translated English jokes
+* jokes that only work in English
+* forced punchlines
+* random absurdity without context
+* repeating the same joke structure
+* simply adding emojis or "😂" and calling it humor
+* long explanations of why something is funny
+
+The assistant should generally understand the user's intended humor and respond appropriately.
+
+## Conversational humor
+
+Include examples where the user:
+
+* asks the assistant to make something funny
+* tells a funny situation
+* makes a joke and expects a playful response
+* asks for a funny comeback
+* asks for a humorous description
+* complains humorously about something
+* asks for a joke about a harmless topic
+* uses sarcasm or exaggeration
+* asks the assistant to make a boring sentence funny
+
+The assistant should adapt to the user's tone.
+
+## Humor styles
+
+Across the 20 examples, vary the humor style:
+
+* dry humor
+* playful sarcasm
+* exaggeration
+* observational humor
+* short punchline
+* playful analogy
+* ironic response
+* absurd but harmless humor
+* relatable situation
+* light teasing
+
+Do not make every example a standalone joke.
+
+Some should be conversational responses.
+
+## Code-switching and humor
+
+French and English can naturally contribute to Algerian humor.
+
+For example, a technical or university joke may naturally contain terms such as:
+
+* deadline
+* exam
+* meeting
+* stage
+* boulot
+* prof
+* application
+* update
+* bug
+* laptop
+* CV
+
+But do NOT insert foreign words randomly.
+
+Code-switching should feel like something an Algerian speaker would actually say.
+
+## Sensitive topics and safety
+
+Keep humor harmless and socially appropriate.
+
+Do NOT generate jokes targeting:
+
+* protected groups
+* ethnicity
+* religion
+* nationality
+* disability
+* serious medical conditions
+* sexual violence
+* abuse
+* self-harm
+* suicide
+* terrorism
+* real-world tragedies
+
+Avoid hateful or demeaning stereotypes.
+
+Light teasing between friends is acceptable when it is clearly playful and non-abusive.
+
+Do not make humor that encourages dangerous behavior.
+
+## User intent
+
+The assistant should distinguish between:
+
+* a user genuinely asking for information
+* a user joking
+* a user asking for a humorous response
+
+Do not turn every question into a joke.
+
+If the user asks a serious question, answer seriously unless the prompt explicitly asks for humor.
+
+## Quality requirements
+
+1. Humor must be understandable without an English cultural reference.
+2. The joke or humorous response should work naturally in Algerian Darija.
+3. Avoid forced punchlines.
+4. Avoid repetitive structures.
+5. Avoid excessive emojis.
+6. Do not explain the joke unless necessary.
+7. Keep most responses short to medium length.
+8. Some examples can be one-liners.
+9. Some examples can be short conversational exchanges.
+10. Vary the punchline style.
+11. Do not fabricate claims merely to make a joke.
+12. Avoid making the assistant sound like it is trying too hard to be funny.
+
+## Script distribution
+
+Examples 1–12:
+
+* primarily Arabic-script Algerian Darija
+* natural Algerian conversational humor
+
+Examples 13–16:
+
+* primarily Arabizi/Latin-script Algerian Darija
+* realistic Algerian online humor
+
+Examples 17–20:
+
+* mixed Arabic + natural French/English
+* realistic code-switching
+
+Set the `script` field as follows:
+
+* examples 1–12: `"arabic"`
+* examples 13–16: `"arabizi"`
+* examples 17–20: `"mixed"`
+
+The `script` field describes the dominant writing script of the Darija content.
+
+## Diversity requirements
+
+Make the 20 examples meaningfully different.
+
+Vary:
+
+* humor style
+* topic
+* setup
+* response length
+* conversational context
+* degree of exaggeration
+* script
+* amount of code-switching
+
+Do NOT:
+
+* make every example a joke
+* make every example about university
+* make every example about Algerian bureaucracy
+* make every joke use the same punchline structure
+* repeat the same cultural references
+* generate near-duplicate examples
+
+## Output format
+
+Output ONLY valid JSONL.
+
+Generate exactly 20 objects, one per line.
+
+Use these candidate IDs exactly:
+
+humor_000001
+humor_000002
+...
+humor_000020
+
+Each object must have exactly this structure:
+
+{
+"candidate_id": "humor_000001",
+"messages": [
+{
+"role": "user",
+"content": "..."
+},
+{
+"role": "assistant",
+"content": "..."
+}
+],
+"category": "humor",
+"script": "arabic",
+"generation_method": "llm",
+"generation_model": "GPT-5.6 Luna"
+}
+
+For examples 13–16 use:
+
+"script": "arabizi"
+
+For examples 17–20 use:
+
+"script": "mixed"
+
+No markdown.
+No explanations outside the JSONL.

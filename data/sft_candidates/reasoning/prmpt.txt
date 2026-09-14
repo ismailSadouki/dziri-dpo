@@ -1,0 +1,179 @@
+Generate 20 candidate instruction-response examples for Algerian Darija in the category `reasoning`.
+
+The goal is to create high-quality supervised fine-tuning data for an Algerian Darija language model.
+
+## Core language requirements
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must be naturally phrased in Algerian Darija.
+3. The dataset MUST contain realistic variation in writing style and script.
+4. Do NOT generate all examples in Arabic script.
+5. Use this target script distribution:
+   - 12 primarily Arabic script
+   - 4 primarily Arabizi/Latin script
+   - 4 mixed Arabic + natural French/English code-switching
+6. Arabizi examples must look like realistic Algerian online writing, not mechanical transliteration.
+7. Arabic-script examples must sound authentically Algerian, not Modern Standard Arabic.
+8. Mixed examples may naturally contain French or English technical/common terms when Algerians would realistically use them.
+9. Do not force French or English into every mixed example.
+10. Do not use Moroccan or Tunisian Darija.
+11. Avoid excessive MSA vocabulary and sentence structure.
+
+## Reasoning category
+
+Focus on problems where the user expects the assistant to think through the situation rather than simply retrieve a fact.
+
+Include a diverse mixture of:
+
+- everyday logical reasoning
+- cause-and-effect reasoning
+- comparing two or more options
+- practical decision-making
+- prioritization
+- planning
+- identifying contradictions
+- interpreting situations
+- common-sense reasoning
+- simple estimation
+- basic quantitative reasoning
+- multi-step reasoning
+- explaining why one option makes more sense than another
+- reasoning about consequences
+- choosing between alternatives under constraints
+
+Examples should feel like questions a real Algerian person could ask an assistant.
+
+Good examples include situations such as:
+- deciding which task to do first when time is limited
+- figuring out why a plan failed
+- comparing two practical options
+- reasoning from several pieces of information
+- identifying what conclusion follows from a situation
+- estimating quantities or time
+- deciding what information is missing before making a decision
+- spotting an inconsistency in someone's explanation
+
+Do NOT make the dataset primarily mathematical.
+Do NOT turn every example into a puzzle.
+Do NOT use artificial IQ-test questions.
+Do NOT make every question explicitly say "explain your reasoning".
+The reasoning should arise naturally from the user's question.
+
+## Difficulty
+
+Use mostly easy-to-medium reasoning.
+
+Some examples should require multiple reasoning steps, but the answer should remain understandable and natural.
+
+Do not generate advanced university mathematics, formal proofs, programming problems, or highly specialized technical reasoning.
+
+## Response quality
+
+1. The assistant must actually solve the reasoning problem.
+2. Give enough explanation to make the conclusion understandable.
+3. Do not provide unexplained conclusions.
+4. Keep responses reasonably concise.
+5. Avoid generic filler.
+6. Do not invent facts that are unnecessary for the reasoning.
+7. If the problem does not contain enough information for a definite conclusion, say so naturally and explain what information is missing.
+8. When multiple answers are possible, acknowledge the relevant uncertainty.
+9. Use natural Algerian conversational phrasing.
+10. Vary response structure and length.
+11. Do not repeat the same reasoning pattern across examples.
+12. Avoid artificial benchmark-style wording.
+
+## Script distribution
+
+Examples 1–12:
+- primarily Arabic script
+- authentic Algerian Darija
+
+Examples 13–16:
+- primarily Arabizi/Latin script
+- realistic Algerian online writing
+
+Examples 17–20:
+- mixed Arabic + natural French/English code-switching
+
+For Arabizi, use realistic Algerian spellings and expressions rather than mechanically transliterating Arabic.
+
+For mixed examples, code-switch naturally with terms such as:
+- plan
+- deadline
+- budget
+- application
+- priorité
+- option
+- problème
+- solution
+- data
+- internet
+- CV
+
+Only use such terms when they naturally fit the sentence.
+
+## Important diversity requirements
+
+Do not make all 20 examples follow the same structure.
+
+Vary:
+- question length
+- reasoning complexity
+- conversational style
+- sentence structure
+- response length
+- type of reasoning
+- script
+- topic
+
+Do not repeatedly use patterns like:
+"إذا كان X و Y، واش نديرو؟"
+
+Avoid near-duplicate questions.
+
+## Output format
+
+Output ONLY valid JSONL.
+
+Generate exactly 20 objects, one per line.
+
+Use these candidate IDs exactly:
+
+general_qa_000001
+...
+
+Actually, use:
+
+reasoning_000001
+reasoning_000002
+...
+reasoning_000020
+
+Each object must have exactly this structure:
+
+{
+  "candidate_id": "reasoning_000001",
+  "messages": [
+    {
+      "role": "user",
+      "content": "..."
+    },
+    {
+      "role": "assistant",
+      "content": "..."
+    }
+  ],
+  "category": "reasoning",
+  "script": "arabic",
+  "generation_method": "llm",
+  "generation_model": "GPT-5.6 Luna"
+}
+
+For examples 13–16 use:
+"script": "arabizi"
+
+For examples 17–20 use:
+"script": "mixed"
+
+No markdown.
+No explanations outside the JSONL.

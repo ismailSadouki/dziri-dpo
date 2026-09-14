@@ -1,0 +1,276 @@
+Generate 20 candidate instruction-response examples for Algerian Darija in the category `commerce`.
+
+The goal is to create high-quality supervised fine-tuning data for an Algerian Darija language model.
+
+## Core language requirements
+
+1. The user message must be naturally phrased in Algerian Darija.
+2. The assistant response must naturally be written in Algerian Darija.
+3. The dataset MUST contain realistic variation in writing style and script.
+4. Do NOT generate all examples in Arabic script.
+5. Use this target script distribution:
+
+   * 12 primarily Arabic script
+   * 4 primarily Arabizi/Latin script
+   * 4 mixed Arabic + natural French/English code-switching
+6. Arabizi examples must look like realistic Algerian online writing, not mechanical transliteration.
+7. Arabic-script examples must sound authentically Algerian, not Modern Standard Arabic.
+8. Mixed examples may naturally contain French or English terms when Algerians would realistically use them.
+9. Do not force French or English into every mixed example.
+10. Do not use Moroccan or Tunisian Darija.
+11. Avoid excessive MSA vocabulary and sentence structure.
+
+## Commerce category
+
+Focus on everyday commercial and consumer situations relevant to Algeria.
+
+Include a diverse mixture of:
+
+* buying products
+* comparing products
+* comparing prices
+* checking whether a deal is worthwhile
+* online shopping
+* local shops
+* marketplaces
+* delivery
+* shipping fees
+* cash on delivery
+* payment methods
+* receipts and invoices
+* returns and exchanges
+* warranties
+* product defects
+* discounts and promotions
+* bargaining / negotiating prices
+* checking product authenticity
+* understanding product descriptions
+* comparing total cost rather than sticker price
+* buying used products
+* seller/buyer communication
+* basic budgeting for a purchase
+* evaluating suspicious offers
+* understanding common commercial terms
+
+Make the situations feel like things an Algerian customer or seller could realistically encounter.
+
+## Algerian context
+
+When relevant, reflect realistic Algerian commerce practices, such as:
+
+* paiement à la livraison
+* livraison à domicile
+* delivery fees
+* local shops
+* online sellers
+* marketplace listings
+* cash payments
+* bank or electronic payment when appropriate
+* asking whether a product is available
+* asking about delivery to another wilaya
+* negotiating prices
+* checking warranty conditions
+* asking for a facture
+* comparing local and online prices
+
+Do not assume that every Algerian seller or store uses the same payment or delivery system.
+
+Do not invent specific companies, prices, policies, or commercial regulations unless the question provides them.
+
+## Reasoning and calculations
+
+Some examples should require simple reasoning, such as:
+
+* calculating a discount
+* comparing two offers
+* calculating the final price after delivery
+* determining which option is cheaper
+* comparing price per unit
+* deciding whether a bundle is actually cheaper
+* calculating how much money remains from a budget
+* comparing a used product with a new one based on given information
+
+Use simple arithmetic that can be verified from the information in the question.
+
+Do NOT make the category primarily mathematical.
+
+## Consumer protection and suspicious offers
+
+Include a small number of examples involving potentially problematic commercial situations.
+
+Examples can involve:
+
+* suspiciously cheap products
+* fake discounts
+* sellers asking for unusual payment methods
+* missing product information
+* counterfeit-looking products
+* unclear return policies
+* refusing to provide a receipt
+* pressure to pay immediately
+
+The assistant should give practical, cautious advice without making unsupported legal claims.
+
+Do not invent Algerian laws or specific legal rights.
+
+If the question requires current legal information, explain that the exact rules depend on the applicable law or current policy rather than inventing an answer.
+
+## Product comparisons
+
+When comparing products:
+
+1. Base the comparison only on information provided in the question.
+2. Do not invent specifications.
+3. If important information is missing, say what should be checked.
+4. Consider total cost, warranty, quality, intended use, and after-sales service when relevant.
+5. Do not automatically recommend the more expensive option.
+
+## Quality requirements
+
+1. Actually answer the user's commercial question.
+2. Give practical and useful advice.
+3. Keep responses reasonably concise.
+4. Use natural Algerian conversational phrasing.
+5. Avoid generic filler.
+6. Do not invent prices, products, sellers, stores, policies, or facts.
+7. Do not make unsupported financial or legal claims.
+8. Clearly distinguish between a calculation and an assumption.
+9. When information is insufficient, say so naturally.
+10. Avoid excessive warnings.
+11. Vary response length and structure.
+12. Do not repeatedly recommend "compare prices" without actually explaining how to compare them.
+13. Do not make every example about online shopping.
+
+## Question diversity
+
+Across the 20 examples, include different situations such as:
+
+* "واش الفرق بين هاذ الزوج عروض؟"
+* "إذا كان السعر ... وزيد عليه livraison، شحال نخلص؟"
+* "هذا discount راهو مليح ولا غير marketing؟"
+* "كيفاش نعرف واش المنتج أصلي؟"
+* "نقدر نطلب من vendeur معلومات إضافية قبل ما نشري؟"
+* "واش لازم نسقسي عليه كي نشري produit مستعمل؟"
+* "واش أحسن: منتوج أغلى بضمان ولا أرخص بلا ضمان؟"
+* questions about returns/exchanges
+* questions about delivery
+* questions about payment
+* questions about bargaining
+* questions about suspicious listings
+* simple price comparisons
+* seller/customer conversations
+
+Do not make all examples questions about whether something is "worth it."
+
+## Script distribution
+
+Examples 1–12:
+
+* primarily Arabic script
+* authentic Algerian Darija
+
+Examples 13–16:
+
+* primarily Arabizi/Latin script
+* realistic Algerian online writing
+
+Examples 17–20:
+
+* mixed Arabic + natural French/English code-switching
+
+For Arabizi examples, use realistic Algerian online spelling rather than mechanically transliterating every Arabic word.
+
+For mixed examples, naturally use terms such as:
+
+* prix
+* livraison
+* vendeur
+* facture
+* garantie
+* produit
+* commande
+* retour
+* échange
+* paiement
+* promotion
+* discount
+* budget
+* marketplace
+
+Only use them when they naturally fit the conversation.
+
+## Diversity requirements
+
+Make the 20 examples meaningfully different.
+
+Vary:
+
+* online vs physical shopping
+* buyer vs seller perspective
+* product categories
+* simple vs multi-step questions
+* price calculations
+* consumer decisions
+* delivery/payment situations
+* bargaining
+* product authenticity
+* warranty/returns
+* question length
+* response length
+* conversational style
+* script
+
+Do not repeatedly use the same product.
+
+Do not make all examples about smartphones or electronics.
+
+Do not create near-duplicate questions.
+
+## Output format
+
+Output ONLY valid JSONL.
+
+Generate exactly 20 objects, one per line.
+
+Use these candidate IDs exactly:
+
+algerian_culture_000001
+...
+
+Actually, use:
+
+commerce_000001
+commerce_000002
+...
+commerce_000020
+
+Each object must have exactly this structure:
+
+{
+"candidate_id": "commerce_000001",
+"messages": [
+{
+"role": "user",
+"content": "..."
+},
+{
+"role": "assistant",
+"content": "..."
+}
+],
+"category": "commerce",
+"script": "arabic",
+"generation_method": "llm",
+"generation_model": "GPT-5.6 Luna"
+}
+
+For examples 13–16 use:
+
+"script": "arabizi"
+
+For examples 17–20 use:
+
+"script": "mixed"
+
+No markdown.
+No explanations outside the JSONL.
