@@ -1,17 +1,23 @@
+import argparse
+import json
+from pathlib import Path
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from peft import PeftModel
 
 
 BASE_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
-ADAPTER = "outputs/sft_smoke"
+
+PROMPTS = [
+    "تقدر تشرحلي كيفاش نحسبو مساحة المثلث؟",
+    "واش نقدر ندير باش ننظم وقتي بين القراية والراحة؟",
+    "علاش السماء تبان زرقاء؟",
+]
 
 
-def main():
-    # Load tokenizer from the adapter directory
-    tokenizer = AutoTokenizer.from_pretrained(ADAPTER)
-
-    # Load base model in the same 4-bit configuration as training
+def generate_samples(adapter: str) -> list[dict[str, str]]:
+    tokenizer = AutoTokenizer.from_pretrained(adapter)
 
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
@@ -27,23 +33,16 @@ def main():
         device_map="auto",
     )
 
-    # Attach trained adapter
     model = PeftModel.from_pretrained(
         base_model,
-        ADAPTER,
+        adapter,
     )
 
     model.eval()
 
-    # Test prompts
+    results = []
 
-    prompts = [
-        "تقدر تشرحلي كيفاش نحسبو مساحة المثلث؟",
-        "واش نقدر ندير باش ننظم وقتي بين القراية والراحة؟",
-        "علاش السماء تبان زرقاء؟",
-    ]
-
-    for i, prompt in enumerate(prompts, 1):
+    for prompt in PROMPTS:
         messages = [
             {
                 "role": "user",
@@ -58,8 +57,6 @@ def main():
             return_tensors="pt",
         )
 
-        # Transformers may return a tensor or BatchEncoding depending
-        # on the tokenizer configuration.
         if hasattr(inputs, "input_ids"):
             input_ids = inputs.input_ids
             attention_mask = inputs.attention_mask
@@ -87,13 +84,42 @@ def main():
             skip_special_tokens=True,
         )
 
-        print(f"\n{'=' * 60}")
-        print(f"TEST {i}")
-        print(f"{'=' * 60}")
-        print("PROMPT:")
-        print(prompt)
-        print("\nRESPONSE:")
-        print(response)
+        results.append(
+            {
+                "prompt": prompt,
+                "response": response,
+            }
+        )
+
+    return results
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--adapter", required=True)
+    parser.add_argument("--output", required=True)
+    args = parser.parse_args()
+
+    results = generate_samples(args.adapter)
+
+    output_path = Path(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    output_path.write_text(
+        json.dumps(
+            {
+                "base_model": BASE_MODEL,
+                "adapter": args.adapter,
+                "max_new_tokens": 100,
+                "do_sample": False,
+                "samples": results,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
+
+    print(f"Saved generations to: {output_path}")
 
 
 if __name__ == "__main__":

@@ -66,6 +66,7 @@ class TrainingMetricsCallback(TrainerCallback):
         self.start_time = None
         self.last_time = None
         self.last_tokens = 0
+        self.tokens_per_sec = None
 
     def on_train_begin(self, args, state, control, **kwargs):
         self.start_time = time.perf_counter()
@@ -91,7 +92,8 @@ class TrainingMetricsCallback(TrainerCallback):
             delta_time = now - self.last_time
 
             if delta_time > 0 and delta_tokens > 0:
-                logs["tokens_per_sec"] = delta_tokens / delta_time
+                self.tokens_per_sec = delta_tokens / delta_time
+                logs["tokens_per_sec"] = self.tokens_per_sec
 
             self.last_tokens = current_tokens
             self.last_time = now
@@ -106,6 +108,10 @@ class TrainingMetricsCallback(TrainerCallback):
             return
 
         elapsed = time.perf_counter() - self.start_time
+
+        if self.last_tokens > 0 and elapsed > 0:
+            self.tokens_per_sec = self.last_tokens / elapsed
+
 
         print("\nTraining metrics")
         print("=" * 40)
@@ -143,6 +149,9 @@ def build_dataset(path, tokenizer, max_length):
         examples.append(formatted)
 
     return Dataset.from_list(examples)
+
+
+
 
 
 def main():
@@ -214,6 +223,12 @@ def main():
     print(f"Model loading mode: {model_mode}")
     print(f"Model loaded in 4-bit: {getattr(model, 'is_loaded_in_4bit', False)}")
 
+    lora_config = config.get("lora", {})
+    target_modules = lora_config.get(
+        "target_modules",
+        ["q_proj", "k_proj", "v_proj", "o_proj"],
+    )
+
 
     # LoRa
     peft_config = LoraConfig(
@@ -222,13 +237,9 @@ def main():
         lora_dropout=0.05,
         bias="none",
         task_type="CAUSAL_LM",
-        target_modules=[
-            "q_proj",
-            "k_proj",
-            "v_proj",
-            "o_proj",
-        ],
+        target_modules=target_modules,
     )
+    print(f"LoRA target modules: {target_modules}")
 
 
 
@@ -298,6 +309,7 @@ def main():
         pad_token_id=tokenizer.pad_token_id,
     )
 
+    training_metrics_callback = TrainingMetricsCallback()
     trainer = SFTTrainer(
         model=model,
         args=sft_config,
@@ -306,7 +318,7 @@ def main():
         processing_class=tokenizer,
         data_collator=collator,
         peft_config=peft_config,
-        callbacks=[TrainingMetricsCallback()],
+        callbacks=[training_metrics_callback],
     )
 
     parameter_report = print_parameter_report(trainer.model)
@@ -335,7 +347,44 @@ def main():
 
 
     with measure_peak_vram() as vram_metrics:
-        trainer.train()
+        train_result = trainer.train()
+
+    eval_metrics = trainer.evaluate()
+
+    run_summary = {
+        "run": {
+            "name": config["run"]["name"],
+            "seed": config["run"]["seed"],
+            "status": "PASS",
+        },
+        "model": {
+            "name": config["model"]["name"],
+            "mode": config["model"]["mode"],
+        },
+        "lora": {
+            "rank": 16,
+            "alpha": 32,
+            "dropout": 0.05,
+            "target_modules": target_modules,
+        },
+        "metrics": {
+            "trainable_params": parameter_report["trainable_params"],
+            "total_params": parameter_report["total_params"],
+            "trainable_percentage": parameter_report["trainable_percentage"],
+            "train_loss": train_result.training_loss,
+            "eval_loss": eval_metrics.get("eval_loss"),
+            "eval_token_accuracy": eval_metrics.get("eval_mean_token_accuracy"),
+            "peak_vram_gb": vram_metrics["peak_allocated_gb"],
+            "peak_reserved_gb": vram_metrics["peak_reserved_gb"],
+            "wall_time_sec": vram_metrics["elapsed_time_sec"],
+            "tokens_per_sec": training_metrics_callback.tokens_per_sec,
+        },
+    }
+
+    summary_path = Path(output_dir) / "run_summary.json"
+    summary_path.write_text(json.dumps(run_summary, indent=2))
+
+    print(f"Saved run summary to: {summary_path}")
 
     print("\nTraining metrics")
     print("=" * 40)

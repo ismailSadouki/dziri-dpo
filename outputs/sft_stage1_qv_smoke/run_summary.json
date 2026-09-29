@@ -1,0 +1,31 @@
+{
+  "run": {
+    "name": "qwen15b_darija_stage1_qv",
+    "seed": 42,
+    "status": "PASS"
+  },
+  "model": {
+    "name": "Qwen/Qwen2.5-1.5B-Instruct",
+    "mode": "qlora_nf4"
+  },
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ]
+  },
+  "metrics": {
+    "trainable_params": 2179072,
+    "total_params": 890795520,
+    "trainable_percentage": 0.24462089795871447,
+    "train_loss": 3.5534450149536134,
+    "eval_loss": 3.4140067100524902,
+    "eval_token_accuracy": 0.3852011419155381,
+    "peak_vram_gb": 2.3854174613952637,
+    "peak_reserved_gb": 3.564453125,
+    "wall_time_sec": 279.2470948930004
+  }
+}
