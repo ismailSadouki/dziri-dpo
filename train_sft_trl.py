@@ -10,13 +10,17 @@ from peft import LoraConfig
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
-    BitsAndBytesConfig,
     TrainerCallback,
 )
 
+from darija_alignment.model.parameter_report import print_parameter_report
+from darija_alignment.model.loading import load_sft_model
 from trl import SFTConfig, SFTTrainer
 
 from darija_alignment.sft import format_sft_example
+
+from darija_alignment.measure_peak_vram import measure_peak_vram
+
 
 class ResponseOnlyCollator:
     """Pad already-tokenized response onlh SFT examples"""
@@ -199,26 +203,17 @@ def main():
     print(f"Eval examples:  {len(eval_dataset)}")
 
 
-    compute_dtype = torch.bfloat16
 
-    compute_dtype = torch.bfloat16
 
-    # 4-bit QLORA  
-    quantization_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_use_double_quant=True,
-        bnb_4bit_compute_dtype=compute_dtype,
-    )
+    model_mode = config["model"].get("mode", "qlora_nf4")
+    model = load_sft_model(
+            model_name=model_name,
+            mode=model_mode,
+            gradient_checkpointing=config["training"]["gradient_checkpointing"],
+        )
+    print(f"Model loading mode: {model_mode}")
+    print(f"Model loaded in 4-bit: {getattr(model, 'is_loaded_in_4bit', False)}")
 
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        quantization_config=quantization_config,
-        torch_dtype=compute_dtype,
-        device_map="auto",
-    )
-
-    model.config.use_cache = False
 
     # LoRa
     peft_config = LoraConfig(
@@ -314,6 +309,8 @@ def main():
         callbacks=[TrainingMetricsCallback()],
     )
 
+    parameter_report = print_parameter_report(trainer.model)
+
     batch = collator(
         [
             train_dataset[0],
@@ -337,7 +334,13 @@ def main():
 
 
 
-    trainer.train()
+    with measure_peak_vram() as vram_metrics:
+        trainer.train()
+
+    print("\nTraining metrics")
+    print("=" * 40)
+    print(f"Wall time:      {vram_metrics['elapsed_time_sec']:.2f} s")
+    print(f"Peak VRAM:      {vram_metrics['peak_allocated_gb']:.2f} GB")
 
     trainer.save_model(output_dir)
     tokenizer.save_pretrained(output_dir)
