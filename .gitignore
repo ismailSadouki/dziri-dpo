@@ -1,0 +1,6 @@
+
+# SFT training outputs / checkpoints
+outputs/sft_stage1_*/
+outputs/sft_stage2_*/
+outputs/sft_stage3_*/
+outputs/sft_stage4_*/

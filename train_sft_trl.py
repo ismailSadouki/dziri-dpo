@@ -224,6 +224,7 @@ def main():
     print(f"Model loaded in 4-bit: {getattr(model, 'is_loaded_in_4bit', False)}")
 
     lora_config = config.get("lora", {})
+    rank = lora_config.get("r", 16)
     target_modules = lora_config.get(
         "target_modules",
         ["q_proj", "k_proj", "v_proj", "o_proj"],
@@ -232,7 +233,7 @@ def main():
 
     # LoRa
     peft_config = LoraConfig(
-        r=16,
+        r=rank,
         lora_alpha=32,
         lora_dropout=0.05,
         bias="none",
@@ -362,7 +363,7 @@ def main():
             "mode": config["model"]["mode"],
         },
         "lora": {
-            "rank": 16,
+            "rank": rank,
             "alpha": 32,
             "dropout": 0.05,
             "target_modules": target_modules,
