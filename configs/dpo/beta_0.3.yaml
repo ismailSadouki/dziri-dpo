@@ -1,0 +1,37 @@
+model_name: Qwen/Qwen2.5-1.5B-Instruct
+sft_checkpoint: outputs/sft_stage4_data100/checkpoint-100
+
+train_dataset: data/preference_splits/train.jsonl
+eval_dataset: data/preference_splits/test.jsonl
+
+beta: 0.3
+
+load_in_4bit: true
+bnb_4bit_quant_type: nf4
+bnb_4bit_use_double_quant: true
+bnb_4bit_compute_dtype: bfloat16
+
+max_steps: 50
+
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+
+learning_rate: 5.0e-6
+max_length: 512
+
+seed: 42
+
+gradient_checkpointing: true
+bf16: true
+
+logging_steps: 5
+
+eval_strategy: "steps"
+eval_steps: 10
+
+save_strategy: "steps"
+save_steps: 50
+save_total_limit: 1
+
+output_dir: outputs/dpo_beta_0.3

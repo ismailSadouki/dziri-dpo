@@ -1,0 +1,18 @@
+{
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "sft_checkpoint": "outputs/sft_stage4_data100/checkpoint-100",
+  "preference_dataset": "data/preference_dataset.jsonl",
+  "beta": 0.1,
+  "max_steps": 10,
+  "train_rows": 132,
+  "seed": 42,
+  "final_train_metrics": {
+    "train_runtime": 71.2531,
+    "train_samples_per_second": 1.123,
+    "train_steps_per_second": 0.14,
+    "total_flos": 165487886327808.0,
+    "train_loss": 0.5949907422065734,
+    "epoch": 0.6060606060606061,
+    "step": 10
+  }
+}

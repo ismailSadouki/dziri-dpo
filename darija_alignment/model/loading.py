@@ -43,7 +43,7 @@ def load_sft_model(
         model_name,
         revision=revision,
         trust_remote_code=trust_remote_code,
-        torch_dtype=torch.bfloat16,
+        dtype=torch.bfloat16,
         quantization_config=quantization_config,
         device_map="auto",
     )
