@@ -1,0 +1,40 @@
+{
+  "beta": {
+    "0.05": {
+      "reward_accuracy": 0.9545454545454546,
+      "margin": 0.4048017231239514,
+      "eval_loss": 0.5193414092063904,
+      "chosen_reward": -0.07227827215154486,
+      "chosen_kl_proxy": -1.4455654430308973,
+      "chosen_logp": -207.73959801413795,
+      "mean_generated_tokens": 101.36363636363636
+    },
+    "0.1": {
+      "reward_accuracy": 0.9545454545454546,
+      "margin": 0.7983049444684928,
+      "eval_loss": 0.39945295453071594,
+      "chosen_reward": -0.1307334299172825,
+      "chosen_kl_proxy": -1.307334299172825,
+      "chosen_logp": -207.60136691006747,
+      "mean_generated_tokens": 99.9090909090909
+    },
+    "0.3": {
+      "reward_accuracy": 0.9545454545454546,
+      "margin": 2.1727930598638276,
+      "eval_loss": 0.22590656578540802,
+      "chosen_reward": -0.29779714375565,
+      "chosen_kl_proxy": -0.9926571458521666,
+      "chosen_logp": -207.28668971495196,
+      "mean_generated_tokens": 95.29545454545455
+    },
+    "0.5": {
+      "reward_accuracy": 0.9545454545454546,
+      "margin": 3.3195712349631568,
+      "eval_loss": 0.19650712609291077,
+      "chosen_reward": -0.4235168153589422,
+      "chosen_kl_proxy": -0.8470336307178844,
+      "chosen_logp": -207.14106624776667,
+      "mean_generated_tokens": 96.29545454545455
+    }
+  }
+}

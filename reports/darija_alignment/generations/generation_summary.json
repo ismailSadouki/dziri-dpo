@@ -1,0 +1,42 @@
+{
+  "sft": {
+    "n_prompts": 44,
+    "mean_generated_tokens": 76.52272727272727,
+    "min_generated_tokens": 16,
+    "max_generated_tokens": 244,
+    "max_length_hits": 0,
+    "max_length_hit_rate": 0.0
+  },
+  "beta_0.05": {
+    "n_prompts": 44,
+    "mean_generated_tokens": 101.36363636363636,
+    "min_generated_tokens": 16,
+    "max_generated_tokens": 256,
+    "max_length_hits": 2,
+    "max_length_hit_rate": 0.045454545454545456
+  },
+  "beta_0.1": {
+    "n_prompts": 44,
+    "mean_generated_tokens": 99.9090909090909,
+    "min_generated_tokens": 16,
+    "max_generated_tokens": 256,
+    "max_length_hits": 0,
+    "max_length_hit_rate": 0.0
+  },
+  "beta_0.3": {
+    "n_prompts": 44,
+    "mean_generated_tokens": 95.29545454545455,
+    "min_generated_tokens": 16,
+    "max_generated_tokens": 256,
+    "max_length_hits": 1,
+    "max_length_hit_rate": 0.022727272727272728
+  },
+  "beta_0.5": {
+    "n_prompts": 44,
+    "mean_generated_tokens": 96.29545454545455,
+    "min_generated_tokens": 16,
+    "max_generated_tokens": 233,
+    "max_length_hits": 0,
+    "max_length_hit_rate": 0.0
+  }
+}
